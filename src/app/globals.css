@@ -1,26 +1,138 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Design system ported from obustudio.com (the studio's own site) so Transcribio
+ * reads as the same company. Token values were lifted from the live site's
+ * computed custom properties; the names below keep the app's original vocabulary
+ * (paper/surface/ink/muted/line/accent) so existing app components are untouched.
+ */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  /* App vocabulary, retargeted to the OBU palette. */
+  --paper: #f8faff;
+  --surface: #ffffff;
+  --ink: #161c2d;
+  --muted: #5e6b84;
+  --line: #14223e17;
+  --accent: #1f4fd6;
+  --accent-ink: #ffffff;
+  --accent-soft: #edf2ff;
+  --warn: #9a5b00;
+  --warn-soft: #fdf3e1;
+  --danger: #b42318;
+
+  /* Marketing vocabulary — fixed in both schemes; these are deliberate surfaces. */
+  --panel-alt: #f2f5fb;
+  --ink-2: #3a4661;
+  --label: #5472a0;
+  --line-strong: #14223e26;
+  --accent-hover: #1741b5;
+  --accent-lift: #4e80ee;
+  --deep: #111f3a;
+  --deeper: #0c1830;
+  --inverse: #f0f4ff;
+  --inverse-soft: #bfcfe8;
+  --line-inverse: #b4c8eb29;
+
+  --radius-sm: 0.65rem;
+  --radius-md: 1.15rem;
+  --radius-lg: 1.5rem;
+  --shadow-sm: 0 2px 8px #0e1c3812;
+  --shadow-md: 0 8px 24px #0e1c381a;
+  --shadow-lg: 0 20px 52px #0e1c3821;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --paper: #0c1830;
+    --surface: #111f3a;
+    --ink: #f0f4ff;
+    --muted: #9aabc9;
+    --line: #b4c8eb29;
+    --accent: #6d97f2;
+    --accent-ink: #0a142b;
+    --accent-soft: #17294a;
+    --warn: #f0b457;
+    --warn-soft: #2e2415;
+    --danger: #f47066;
+
+    --panel-alt: #16264423;
+    --ink-2: #c6d3ea;
+    --label: #7e9cd0;
+    --line-strong: #b4c8eb3d;
   }
 }
 
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+
+  --color-panel-alt: var(--panel-alt);
+  --color-ink-2: var(--ink-2);
+  --color-label: var(--label);
+  --color-line-strong: var(--line-strong);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-lift: var(--accent-lift);
+  --color-deep: var(--deep);
+  --color-deeper: var(--deeper);
+  --color-inverse: var(--inverse);
+  --color-inverse-soft: var(--inverse-soft);
+  --color-line-inverse: var(--line-inverse);
+
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-card: var(--radius-md);
+  --radius-panel: var(--radius-lg);
+
+  --shadow-soft: var(--shadow-sm);
+  --shadow-card: var(--shadow-md);
+  --shadow-float: var(--shadow-lg);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/*
+ * OBU display heading: Plus Jakarta Sans 800, very tight tracking and a
+ * line-height under 1. Matches the live site's h1 (72px / 0.93 / -0.045em).
+ */
+.display {
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.93;
+  /* Keeps two-line headlines from leaving one orphaned word on the second line. */
+  text-wrap: balance;
+}
+
+/* Small uppercase section label, e.g. "01 THE PRODUCT". */
+.eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

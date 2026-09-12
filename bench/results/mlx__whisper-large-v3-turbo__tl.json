@@ -1,0 +1,2264 @@
+{
+ "run": "mlx__whisper-large-v3-turbo__tl",
+ "engine": "mlx-whisper",
+ "model": "mlx-community/whisper-large-v3-turbo",
+ "precision": "fp16",
+ "language": "tl",
+ "device": "Apple M4 (Metal)",
+ "audio_seconds": 3013.4,
+ "inference_seconds": 666.2,
+ "realtime_factor": 4.52,
+ "peak_rss_mb": 635,
+ "hypotheses": [
+  {
+   "id": "english-0000",
+   "hypothesis": "Okay, so I make sure that what you see is what you get, what I do is what you get, and what I preach is what you get, and what I do as well.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0001",
+   "hypothesis": "Tinulog is more than a festival. It's a celebration of faith, culture, and identity that brings millions together every year.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0002",
+   "hypothesis": "or you're most likely to go viral on a short-form TikTok or short or Instagram reel. So that's how it's changed in a very short explanation. But, yeah.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0003",
+   "hypothesis": "I took a risk for number three, which was the pizza stand from Kahuna because I had never seen...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0004",
+   "hypothesis": "I don't wanna see you walk in the eye because I'm gonna break down the...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0005",
+   "hypothesis": "At first, I was so scared to ask her because she's been taking care of me because when me and Ramon planned to have babies, she found out that I'm not healthy enough.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0006",
+   "hypothesis": "And there was some anxiety at that point in my life and it was manifesting in my sleep.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0007",
+   "hypothesis": "Oh, you do? How do they feel about that? Kasi sometimes the boys, you know?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0008",
+   "hypothesis": "It's really to make the meat extra tender and then the skin really crispy.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0009",
+   "hypothesis": "Exactly, you can do this with turkey as well, no? Any poultry?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0010",
+   "hypothesis": "So it is deeper than just our memories. Our native languages shapes who we are. And losing it means losing a part of ourselves.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0011",
+   "hypothesis": "and it seems like you protect your tribe.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0012",
+   "hypothesis": "And speaking of partying and preparing, you have your kitchen and your dining right here. Just look at this dining area. It's so peaceful looking.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0013",
+   "hypothesis": "I want this job because it aligns with my strength.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0014",
+   "hypothesis": "Strict when it comes to the service. Quality service. If you have to be strict, you have to be strict.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0015",
+   "hypothesis": "What's one dish you can eat or serve every single day?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0016",
+   "hypothesis": "Everything for us was organic. We didn't expect anything of what you said.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0017",
+   "hypothesis": "Wait, hold on. What about like Wagyu beef? Does that count as good protein with good fat? Yes. So that's here, not here.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0018",
+   "hypothesis": "I really believe that this one to me really hits closer to home, like literally.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0019",
+   "hypothesis": "and I said, oh, for the next season, we were looking for like a 70, 80-year-old mother of Leia Zalonga. I was like, really?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0020",
+   "hypothesis": "Everything here was efficient and economical, as in a complete zero emission energy ecosystem. From power generation with solar to energy storage and usage solutions.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0021",
+   "hypothesis": "It's like life, you know, there's non-stop problems that come into our lives.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0022",
+   "hypothesis": "Because when she brought that out, she actually voiced the feelings of a lot of parents.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0023",
+   "hypothesis": "I have different models. Iba-iba yung height. May mga 5'3\", 5'4\".",
+   "language": "tl"
+  },
+  {
+   "id": "english-0024",
+   "hypothesis": "Wow, that's a lot of words and exciting times.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0025",
+   "hypothesis": "I would not say that this is normal so that can be an indicator that your pet is stressed or anxious or disoriented.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0026",
+   "hypothesis": "to really stretch themselves, you know, and to maybe experiment on different materials and various mediums and yeah.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0027",
+   "hypothesis": "So if you think about it by placing those deathbed words at Corregidor instead of New York, the film emphasizes one dimension of Quezon, the ego, the hunger for power.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0028",
+   "hypothesis": "Why am I so engrossed with this useless gossip?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0029",
+   "hypothesis": "In my family, we would always close our eyes and taste the cake. Is it something that you will savor? Or is it something that you will just swallow because you have already put it in your mouth?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0030",
+   "hypothesis": "I'm gonna go for track workouts if I have strong partners. If I'm training alone, I would go for long run.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0031",
+   "hypothesis": "but the number one part that a lot of people don't necessarily talk about when it comes to healthy eating is to eat as locally as possible. Root crops is something...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0032",
+   "hypothesis": "So that's the challenge right now. It's being able to create more supply for the demand.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0033",
+   "hypothesis": "Its utilization is provided with safeguards and is only available when clearly defined triggers and tests are met.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0034",
+   "hypothesis": "It's also very nice to see a lot of people support us since chaiathlon isn't a very common sport, especially in the Philippines. And it's very nice to receive a lot of support right now.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0035",
+   "hypothesis": "Oh, ready to learn. Oh, very nice. Always ready to learn. Always ready to learn.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0036",
+   "hypothesis": "So I was releasing myself from my past, from my negativity or whatever it was that I thought I cleaned. So I was cleansing in preparation for my new beginning.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0037",
+   "hypothesis": "who is the, when you look at the Sinulog dance, the lady in front, the lead dancer.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0038",
+   "hypothesis": "They're joining us via Zoom all the way from LA. Hi, Aaron and Veronica. Welcome to the Daydick.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0039",
+   "hypothesis": "Okay, so if you were to summarize for everyone, what happened during the baby shower? What happened? How would you do it?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0040",
+   "hypothesis": "And, well, I'd like to say that all of our awards are actually memorable because...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0041",
+   "hypothesis": "Ambulance standby. We have a car. The driver is there. But they have this machine, the oxygen.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0042",
+   "hypothesis": "I don't know why the gravity was so strong. And right after college, I was supposed to have a one-year course.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0043",
+   "hypothesis": "Yes, I go more minimalist but just refined with like delicate accents.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0044",
+   "hypothesis": "Sometimes when I bring it not to Manila, of course the freshness is not there. The skin's not so crispy, right? How do you ensure freshness and crispiness?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0045",
+   "hypothesis": "Overnight, it's gonna firm up, it's gonna be cold, the starch will activate again. So we're gonna make a very, very fresh take on a squash salad.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0046",
+   "hypothesis": "But now my question is, have you ever felt ashamed of speaking your own mother tongues, your own native language? You know, maybe punished at schools, or even teased at home?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0047",
+   "hypothesis": "Oo, the adjustment from just going to school.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0048",
+   "hypothesis": "So, let's backtrack a little bit.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0049",
+   "hypothesis": "I'm learning to delegate more efficiently and balance my work altogether. This helps me maintain consistency while still delivering.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0050",
+   "hypothesis": "Chef, what are your non-negotiables? We've talked about your quality and we've talked about your service last body. But what are your non-negotiables?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0051",
+   "hypothesis": "that payment, yes, you will eventually see it is not enough.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0052",
+   "hypothesis": "Sorry but you know... It's the remix! But you know what? You founded or co-founded Parroquia na Edgar. One of the Philippines' most iconic music groups.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0053",
+   "hypothesis": "Yeah, so for me, I strongly recommend to do resistance training where you have to use weights. That is not only to lose weight and body fat, but also to strengthen our muscles.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0054",
+   "hypothesis": "Well, we work. We always, since we open an asador, we work in doing the excellence of the best programs.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0055",
+   "hypothesis": "What's your secret? Like, from all the legends that mentored you, like your dad and Martin Rivera, what is, like, the one secret to give a great performance?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0056",
+   "hypothesis": "And now I finally get why BYD is the global number one in new energy vehicles. It's not just marketing, it's engineering that's years ahead.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0057",
+   "hypothesis": "But I don't know. I just...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0058",
+   "hypothesis": "This is presented to you by Studio Viva and CJ Entertainment, directed by Crisanto B. Aquino with Robin Angeles and Angela Moore.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0059",
+   "hypothesis": "Same as Ms. Farah actually. Earlier she said that you have to think you're the most beautiful woman in that room or man in that room. So own, own it really.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0060",
+   "hypothesis": "Well, please do visit us in 2026. We hope to continue to renovate a lot of our old special spaces, but we'll also be bringing new ones.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0061",
+   "hypothesis": "You know, the smoke rising from where we live.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0062",
+   "hypothesis": "And to understand this better, joining us now in the studio is the woman behind Modeka Creative Space, Bubbles Bermudez!",
+   "language": "tl"
+  },
+  {
+   "id": "english-0063",
+   "hypothesis": "what people saw in him, and why he mattered beyond being a skilled politician. Now to be honest, when I first heard about the movie Quezon, I was a bit afraid that they're gonna glorify Quezon.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0064",
+   "hypothesis": "And this is actually an evolution, seeing her go through this until now, consciously, this time around, you are helping others naman.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0065",
+   "hypothesis": "I wanted a life that still allowed me to do other things.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0066",
+   "hypothesis": "Oh wow. Track, workouts, or long runs? Andrew?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0067",
+   "hypothesis": "Suckle bags to extract the juices out of this. Ooh!",
+   "language": "tl"
+  },
+  {
+   "id": "english-0068",
+   "hypothesis": "So I'm gonna use my offset spatula and scraper spatula here. So we're just going to...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0069",
+   "hypothesis": "In this regard, the DBM shall consider the expenditures lawfully incurred under the re-enacted budget in formulating its fund release for the guidelines of fiscal year 2026.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0070",
+   "hypothesis": "Alright, do you guys prefer celebrating immediately or staying composed?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0071",
+   "hypothesis": "Ay, adog Sorry, adog or cats Maybe sometimes",
+   "language": "tl"
+  },
+  {
+   "id": "english-0072",
+   "hypothesis": "Okay, first, I'd like to thank Billionario.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0073",
+   "hypothesis": "But yeah, it's all for the safety of the people of course. And but this year, well last year, they brought the Sinulog Parade back into the city.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0074",
+   "hypothesis": "You should really come to the Philippines for sushi. Alright.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0075",
+   "hypothesis": "Moving on from the baby shower, we have the maternity shoot. Okay, so we had discussed this. And I was trying to figure out if we wanted a maternity shoot or not.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0076",
+   "hypothesis": "You're exposed globally, but in the Philippines, we love those heartbreaking, emotional, everything.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0077",
+   "hypothesis": "So I got her team which was Irina and...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0078",
+   "hypothesis": "I'm gonna quit my job. I believe in you. Let's be partners.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0079",
+   "hypothesis": "Well, for me, I think being a mother, it made it easier for me to have a switch of direction.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0080",
+   "hypothesis": "We have binagongan. We also have electron seasing.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0081",
+   "hypothesis": "Yeah, all the... Think about, like, a fresh dip sandwich, right? You put the meat inside, sending them broth as you're, like, you know... Make that...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0082",
+   "hypothesis": "And young people, just like many of you, are stepping up. All over social media, from TikTok to YouTube, Indigenous Truth across the Philippines,",
+   "language": "tl"
+  },
+  {
+   "id": "english-0083",
+   "hypothesis": "So, all the advices, I'm just really trying to apply what I believe is right.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0084",
+   "hypothesis": "If you want to see more of our listings here in Silang, Cavite or the surrounding areas including Tigaytay, make sure you let us know or go to our website at www.presello.com. Invest in your future. Invest with us. Invest with Presello.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0085",
+   "hypothesis": "I consistently produce accurate work while managing responsibilities efficiently. I aim to support team goals and maintain a dependable and professional work ethic.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0086",
+   "hypothesis": "with fig jam and then beefsteak tomato, red wine salt, and I put like threads of kafir.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0087",
+   "hypothesis": "One word to describe your mission as a financial literacy advocate.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0088",
+   "hypothesis": "It's not that smooth. But we always find things or try to blue each other to have fun.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0089",
+   "hypothesis": "Yeah, so in order for you to get fit, generally in order for us to get fit, we have to lift weights.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0090",
+   "hypothesis": "Yes, because I see right now that people love to see the chef's cooking.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0091",
+   "hypothesis": "And then I think it was really because of that. And then since then, 2022, after the pandemic was done,",
+   "language": "tl"
+  },
+  {
+   "id": "english-0092",
+   "hypothesis": "We want it super Chinese, super extra. Bonggang bongga, like, can you say that?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0093",
+   "hypothesis": "4pm po, i-announce niya ng Netflix. But I announced it here.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0094",
+   "hypothesis": "Okay, if you had a billion pesos right now, how would you spend it?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0095",
+   "hypothesis": "then it's time na lang to stop the partnership.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0096",
+   "hypothesis": "So there will be auditory tours of the museum so that they could also appreciate the space.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0097",
+   "hypothesis": "So of course for responsible celebration, we'd like to include our pets because they're family. So we'd like to include them in our celebration by being mindful of them.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0098",
+   "hypothesis": "Right now, there are about six galleries there in that area.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0099",
+   "hypothesis": "But the reality is that that is not what was happening at Corregidor in December 1941.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0100",
+   "hypothesis": "If that's what you want for your relationship moving forward, then go ahead.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0101",
+   "hypothesis": "We don't mechanize much, even the cooking of the frosting we do by hand. It's important not to scrimp on ingredients, to really give the cake what it deserves.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0102",
+   "hypothesis": "Of course, you know, listening to some music as well, it helps, but majority, yeah, I would say having strong teammates alongside you is what really pushes you beyond your limits.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0103",
+   "hypothesis": "I think this could be done also if it was a savory feeling.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0104",
+   "hypothesis": "So I took a course with some people who came from the UK.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0105",
+   "hypothesis": "We will also strengthen the role of local government units to the increased allocations under the Local Government Support Fund, enabling them to address local development needs, support livelihoods, and create safe and resilient communities.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0106",
+   "hypothesis": "Yes, we went to Thailand late, so we were just in the Philippines when the opening ceremony happened.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0107",
+   "hypothesis": "what if what if there's no do there when the family",
+   "language": "tl"
+  },
+  {
+   "id": "english-0108",
+   "hypothesis": "We start with awareness. First and foremost, everyone should be aware, especially kids or students. That's the reason why in the Climate Change Commission, of course, led by my commissioner, Albert de la Cruz,",
+   "language": "tl"
+  },
+  {
+   "id": "english-0109",
+   "hypothesis": "Half and half. Okay, now that we know what actually happens, when to go, preparation. Like, should we register somewhere or it's just come in as you are?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0110",
+   "hypothesis": "Today we are excited to be joined by Aaron Burris, the creator behind one of YouTube's most dynamic channels. Known for his comedy, pranks, and creative collaborations.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0111",
+   "hypothesis": "energy. So it was really a struggle for me because it was very unpredictable.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0112",
+   "hypothesis": "Alright, come on. I don't wanna cry anymore. Rapid fire na tayo.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0113",
+   "hypothesis": "I'm sure, like, for us newbies, it's like we're the parents.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0114",
+   "hypothesis": "A detail in your design you must feel that's always perfect.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0115",
+   "hypothesis": "I love that. I bought a pair of Tom Ford mink boots for a song a few years back and I've only worn them twice. But I can't wait to wear them again.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0116",
+   "hypothesis": "And currently, our catering and events, we're very active in offering or serving letson.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0117",
+   "hypothesis": "So, you have, there's a ratio. You just have to look at where you have. You know the apple's juicy, you know the orange's juicy. You're probably gonna put, like, probably this much. This is probably a tablespoon of vinegar.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0118",
+   "hypothesis": "Native languages in the Philippines are dying not because they're not good enough, but because we've been taught that they're not worth enough. In fact, millions of Filipinos to this very day",
+   "language": "tl"
+  },
+  {
+   "id": "english-0119",
+   "hypothesis": "Yes, it's really a different experience being inside the house.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0120",
+   "hypothesis": "And you have 620, more or less, square meters of floor area split between two levels. And I love that. That means you have a lot of garden space.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0121",
+   "hypothesis": "Honestly, if others weren't so incompetent, I wouldn't even have this weakness.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0122",
+   "hypothesis": "Yeah, like, yeah, I tested, of course, US. US has been here for the longest time, right? So they're like here in the market.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0123",
+   "hypothesis": "Why is the beginning of the year the best time to reassess your finances? Or is it even the best time?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0124",
+   "hypothesis": "And, you know, Monique, it transcends. It doesn't matter if you're rich, poor, Mr. Suami makes you happy.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0125",
+   "hypothesis": "Kasi one of the common misconceptions of people",
+   "language": "tl"
+  },
+  {
+   "id": "english-0126",
+   "hypothesis": "Because today I learned the difference between anchovies and...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0127",
+   "hypothesis": "it becomes about them na. It's about them having fun. And once they see how much fun you're having, they're gonna have fun with you.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0128",
+   "hypothesis": "Mostly a language barrier, because we had a huge miscommunication. I picked up a catalog, saw a photo of this cool guy, and told her to make me look like a local. She glared at me and asked if I really wanted a pink mohawk, because it would have a different effect on me.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0129",
+   "hypothesis": "I love that because like Mo, I know Gerald also you travel quite a bit. My favorite thing about long haul flights is I'm not connected.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0130",
+   "hypothesis": "Behind the Rose and Red Carpets, she's also a devoted mom and someone who has chosen to live life with courage, humor, and authenticity.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0131",
+   "hypothesis": "And then third is always never, never ever fold your legs.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0132",
+   "hypothesis": "That's why the museum was founded by our current chairman, Nina Limuson.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0133",
+   "hypothesis": "We get jealous. But yes, thank you so much. It was actually a really nice...",
+   "language": "tl"
+  },
+  {
+   "id": "english-0134",
+   "hypothesis": "something that sparks a certain kind of feeling.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0135",
+   "hypothesis": "Now the question is what happens when the context you leave out completely changes the story.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0136",
+   "hypothesis": "and I told her, Hey Kix, it's okay. All of the things that you've done in the past.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0137",
+   "hypothesis": "When I hear somebody say, Oh, I was eating your chocolate cake since I was eight years old, and she's now a mother, and she now has children of her own, you know, that's very gratifying to hear. We work very hard at consistency.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0138",
+   "hypothesis": "Okay, pool or open water? Fernando.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0139",
+   "hypothesis": "So the recipe says to enjoy while still warm and then indulge. So I'm gonna call my friend, Seth.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0140",
+   "hypothesis": "It's a good one. Well, I mean, right now, I would like to champion Philippine ingredients, and actually, we're doing something like that.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0141",
+   "hypothesis": "I vetoed several items of appropriations with their purposes and corresponding special provisions under the UA, totaling almost P92.5 billion.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0142",
+   "hypothesis": "And I know where you guys are, of course. We've got the pride of Cebu and the pride of Makati. I'm so proud of you guys.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0143",
+   "hypothesis": "Okay. The shopper. When do your family members because I follow this from the start from the family members.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0144",
+   "hypothesis": "Yes, because people think when you burn it, it becomes carbon. But the difference is that it's thermolysis. It is not insinuating. It's not an insinuator. You burn it, and that's why it's waste to energy because it's being converted into energy.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0145",
+   "hypothesis": "15 years later, I said, I'm happy to.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0146",
+   "hypothesis": "Distant, yeah, we're technically related. Kuya Aaron is from North Carolina, so we're homies.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0147",
+   "hypothesis": "Physically, is there anything, any kind of preparation you would do if you were to enter your third try again?",
+   "language": "tl"
+  },
+  {
+   "id": "english-0148",
+   "hypothesis": "Joining us now are three of its members, Frank Lloyd Mamaril, Kier, and Oliver Agustin. Good afternoon, gentlemen.",
+   "language": "tl"
+  },
+  {
+   "id": "english-0149",
+   "hypothesis": "Five because I have a daughter from my previous relationship. My husband has one daughter as well and four from me and him.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0000",
+   "hypothesis": "Patuloy na umaasa ang mga residente na isang araw.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0001",
+   "hypothesis": "Nakatingin ito sa kanya na tila ba kanina pa siya naroon.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0002",
+   "hypothesis": "Kasi sobrang ibang iba yung iba't ibang probinsya sa Pilipinas. May diversity ng tao.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0003",
+   "hypothesis": "At syempre, kung meron tayong pambansang ibon, meron din tayong pambansang yobag.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0004",
+   "hypothesis": "Ay to to oya... Ay to to oya... Ushito ni na ho!",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0005",
+   "hypothesis": "I-share ko yung mga playlist ko sa habang kami bumabiyahe papuntang Mabini. Isa pa sa favorite namin, hindi nawawala, si Brother Dianella. Iba-iba, di ba?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0006",
+   "hypothesis": "Ay! Huwag mong gawin yung nasarap ng atin.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0007",
+   "hypothesis": "Oh! Girlfriend! Sipag ng boyfriend mo, ha!",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0008",
+   "hypothesis": "Hindi. Malila kasi baliktaglag yung tulog namin. Kaya parang pakiramdam nila. Pagising sila, tulog ako.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0009",
+   "hypothesis": "Oo nga. Dito naman sir sa Pilipinas.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0010",
+   "hypothesis": "Sabi ko nga, sana gumaling na rin siya sa karamdaman.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0011",
+   "hypothesis": "na pinatay ng isang US Marine, si Joseph Scott Pemberton.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0012",
+   "hypothesis": "Ay! Inyong! Inyong! Inyong! Inyong! Inyong! Inyong! Inyong!",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0013",
+   "hypothesis": "Medyo mahinang konting apoy. Tapos yung ating taro leaves na hugasa na yan, napilihan na ng bonggang-bongga.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0014",
+   "hypothesis": "Hindi ka papagod eh. Pahinga ka, pinag-aping mabukuan.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0015",
+   "hypothesis": "Kaya itong huli ko, mas nahihirapan talaga ako. Kasi...",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0016",
+   "hypothesis": "Sabi ko talaga, Mama, paano ako uuwi pag nitibo ko nahanap? Oo nga. Walang seno.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0017",
+   "hypothesis": "Anong panda ang masasaktan sa sinabi mo? Panda ma. Panda ma.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0018",
+   "hypothesis": "Tapos, syempre siguro naisip ng mga nagdedesisyon o bakit natin ito bibigyan ng...",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0019",
+   "hypothesis": "Ang una kong destilasyon, ang isa pang tinaka-flood prone area sa Gulakan, ang Bayan ng Kalumpit.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0020",
+   "hypothesis": "Gusto ng mga tao na magboxing pa siya at hindi muna magpolitika.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0021",
+   "hypothesis": "Pero hindi masyadong maganda yung bayad, yung sweldo. Pero talagang positibo.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0022",
+   "hypothesis": "Oo naman. Dati yung Clark kasi di ba meron na silang airport.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0023",
+   "hypothesis": "Pero hindi ko pa pala alam yung emosyon na daladala ng pagiging isang ina. Iba pala yun.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0024",
+   "hypothesis": "Kaya nagpapakita lang yan na sa kabila ng may mga batas na tayo laban sa VAUSI, napaka-prevalent pa rin ito.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0025",
+   "hypothesis": "Uy! Huwag kang magpiling tatay! Dahil nawala na yung karapatan mong yan nung iniwan mo kami at sumama ka dun sa babae yun!",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0026",
+   "hypothesis": "Mukhang patuloy na magtitiis ang mga estudyante at guru sa kakulangan nila ng silid-aralan.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0027",
+   "hypothesis": "Nandito tayo ngayon sa Saba kasamang ilang tinatawag na stateless children.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0028",
+   "hypothesis": "Diba? Kalmado pa rin yan kahit na tumitilamsik. Hindi kasi natin maiwasan yung pagtilamsik niyan eh.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0029",
+   "hypothesis": "At meron ding inisyatibo yung gobyerno na parang ma-decongest yung kapital ng Pilipinas.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0030",
+   "hypothesis": "Hindi, hindi. Bumalik ka? Sige, bumalik sa akut kita.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0031",
+   "hypothesis": "Paano pag may nagugustuhan kang halabaw o katrabaho mo?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0032",
+   "hypothesis": "o yung mga tinatawag namin na DH sa Hong Kong.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0033",
+   "hypothesis": "Ito yung kinakatakot ko eh. Kapag ganito kasarap at kalinamnam yung niluto natin, kapag kinanina na, nakakalimutan na natin na naparami na...",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0034",
+   "hypothesis": "Tapos, noong nakapagtapos sila,",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0035",
+   "hypothesis": "kung ano yung kaya kong gawin, gagawin ko para magkasama pa rin po kami. Kahit na medyo...",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0036",
+   "hypothesis": "May ganun bang pagkakaiba na napansin ka?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0037",
+   "hypothesis": "Ang sakit. Ang sakit pakinggan, Mayor.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0038",
+   "hypothesis": "Ako, kilala ko kayo. Wala kayong pakialam sa oras. Basta magkakasama kayo.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0039",
+   "hypothesis": "Ibig sabihin, mayroong libre intuition para sa mga estudyante.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0040",
+   "hypothesis": "Siguro yun yung mga may matututunan sa akin yung mga tao. Kasi ganun, ang lambot-lambot mo. Parang ibibigay po. Ay, wag mo sapta niyo anak ko.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0041",
+   "hypothesis": "O po, inisipin namin yun kung siyempre po unang-una saan kukunin yung pambayad, pambili po ng gamot.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0042",
+   "hypothesis": "Minsan, three times. Nakakatulog na ako ngayon sa gabi. Sa soft drinks, nakikrabe ako lagi. Tsaka sa mga matatamis. Ngayon, kaya ko pala ng dahil...",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0043",
+   "hypothesis": "Hindi natin alam baka kailangan na kailangan niya, baka meron siyang paggagastusan. Ano pa tayo? Marami pa. Hindi naman pwede lahat perfect.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0044",
+   "hypothesis": "para na may tsura, marami pa rin halaman, marami pa rin manok. Yung mga manok nandun, sabay nila at saka doon. Ayun, dami nila doon.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0045",
+   "hypothesis": "Wala na ano na yun na random na lang na ano na kasi nga nung panahon na yun.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0046",
+   "hypothesis": "Sobrang dami kumain. Tinok. So may ginagawa bang bahay ito? Dami kumain.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0047",
+   "hypothesis": "Nakapagod kasi yung parang palaging may competition. Hindi pa dapat pag nagmabahal ka, hindi ganito ka komplikado.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0048",
+   "hypothesis": "Ito naman, isa lang ang pinuntaan natin. So, effecta na tayo dun sa kategoryang Micheling Selected. Hindi siya Bib Berman, hindi siya Micheling Star. Pero, kapag Micheling Selected ka,",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0049",
+   "hypothesis": "Papahinga, gagawa ng mga kailangan gawin sa bahay.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0050",
+   "hypothesis": "Hindi nga, pag nagpakasan lang kayo, kailangan si Brent na piliin nyo.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0051",
+   "hypothesis": "Parang kahit ito lang ulam ko ngayon eh. Tsaka yung litsyon. Parang litsyon lain. Pwede na.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0052",
+   "hypothesis": "Kasi sa dami na mapanggugulo na ginawa niya. Hindi.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0053",
+   "hypothesis": "Tigilan mo na yung ginagawa mo, tapos sabi mo, ano bang ginagawa ng kongreso, nagnanakaw, parang ganun.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0054",
+   "hypothesis": "Siyempre para lumaban din talaga ate. Pero nung bandang huli na, hindi na namin siya parang goal na talaga na manalo.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0055",
+   "hypothesis": "Uhm, akala ko imaginary girlfriend ni Ian, yung lagi niyang tinakwento.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0056",
+   "hypothesis": "Pinatawan ko. Ngayon kung lang naintindihan, sabi ko sa kanya na...",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0057",
+   "hypothesis": "Pwedeng dalawa, pwedeng tatlo, lima, pito, o mas okay ba na mag-aral?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0058",
+   "hypothesis": "Oy, pero talaga naman, si Sander Ford tatay na rin. Ikaw, tatay ka na rin.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0059",
+   "hypothesis": "yung halos walang ginawa sa kanina. Maganda, napitas mo, kinatay, yun lang. No, kunyari, mansanas.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0060",
+   "hypothesis": "Walang nagsastop. Hindi ko alam kung sa'ya na kukuha yung kwento niyang pinipigilan ko ang mga anak ko. Yun yung mga picture na pinapalabas niya. Yung mga graduation ng mga bata, kasama ako.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0061",
+   "hypothesis": "mabuntis ako. Kaya hindi ako nakapagsupport kay kuya. Actually, baka pag napanood ni kuya ito, ngayon niya lang malaman na nanganaka.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0062",
+   "hypothesis": "Kamasarap yung parang micro-senamin noong",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0063",
+   "hypothesis": "kaganid at kahalang yung gituukan ng mga taong gumawa nito. Hindi ko naintindihan.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0064",
+   "hypothesis": "Para sa mga gurong, inispend nila na time sa mga suyante nila, sa workload nila.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0065",
+   "hypothesis": "At itinutuloy ko lang yung pag-isa hanggang sa lumambot na ng tuluyan yung kamatis at yung sibuyas.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0066",
+   "hypothesis": "Nung minum ako tapos nalinggo, pagbalik ko, hindi na ako nakakaramdam ng pagod at sak.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0067",
+   "hypothesis": "Kung paninira, di dapat nag-imbento ako ng mga kagagat. Kung paninira yun, marami pa akong alam. Kaya lang, malaki na.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0068",
+   "hypothesis": "Lumapit si Pepay sa banga at dahan-dahang sumilip sa loob.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0069",
+   "hypothesis": "Oh, iba na alami. Isa lang masasabi ko, halika muna dito. Anap na!",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0070",
+   "hypothesis": "sa Subic at sa Clark, maganda yung mga kalye, madaming puno.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0071",
+   "hypothesis": "At yung pagsabog ng pinatubo, sabi ng ibang eksperto,",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0072",
+   "hypothesis": "Kasi, para dahil hawak ko yung oras po, kakali ako ligising.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0073",
+   "hypothesis": "Negatibo yung reaksyon niya. Pero paano natin nalalaman? Kasi pwedeng hindi naman, diba?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0074",
+   "hypothesis": "Kailangan yung buong bayan, yung buong barrio kasi malaki yun at ibig sabihin merong okasyon.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0075",
+   "hypothesis": "At sa mga kaibigan at cabs natin na OFW na kapag umuwi ay itatry daw nila. Sana po ay mag-comment kayong muli kapag natryin nyo na.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0076",
+   "hypothesis": "Kapag may tanong ako, sinusulat ko yung tanong. Tapos kapag may dadalaw sa akin, pinapadala ko.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0077",
+   "hypothesis": "So sa panahon ko, sa henerasyon ko, kailangan mong itanong doon sa tao na gusto mo.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0078",
+   "hypothesis": "Tapos, territorial sila. Ibig sabihin, meron silang territorial at malaki yung teritorial.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0079",
+   "hypothesis": "May iba-ibang lingwahe sila, iba-iba yung ugali ng tao, kung sa hilaga, kung sa kanluran.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0080",
+   "hypothesis": "ang mamigay ng kung ano-ano para lumakas ka rin sa tao.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0081",
+   "hypothesis": "si Jacob Batalon sa Spider-Man si Bruno Mars Livia Rodrigo",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0082",
+   "hypothesis": "Pero ngayon, sa tingin ko, kinagamit na ng madaming Pilipino.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0083",
+   "hypothesis": "Unlike sa ibang companies na meron talaga silang pinoprovide na leave.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0084",
+   "hypothesis": "Dahil nasaktan yung pride ko, kaya gusto ko siyang bawiin.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0085",
+   "hypothesis": "Tapos, nung nakikinig kayo, naisip nyo, ito ang gusto kong gawin.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0086",
+   "hypothesis": "Pero dahil nilagyan mo ng buro, natanggal niya yung pait. Pag subo mo, wala ka naramdaman pait. Balancing balance sila.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0087",
+   "hypothesis": "para po ma-assist yung iba naming mga abogado dun. So, dun lang naman po nagre-revolve yung mga responsibilidad ko pagdating sa work.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0088",
+   "hypothesis": "So, siyempre pag sa ibang bansa, kukuha lang ng prutas dun. Pero dito, may prutas lang, may mga saging lang sa labas. Tapos, wala, wala nung pakilam kung may kukuha.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0089",
+   "hypothesis": "Kaya hindi nagsasabaw, hindi niluto. Pero kasi baka iniisip ng ibang tao, eh, di rin mo ganyan yung kalanggo, paano gumakapagluto niyan?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0090",
+   "hypothesis": "Nasa ulanan yan, nasa araw, para lang makita ka. Umiti ka man lang. Alam mo yun.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0091",
+   "hypothesis": "Kung nasa loob ka ng bahay, tapos sarado yung bintana mo, tahimik na.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0092",
+   "hypothesis": "Lahat ng yon ay ginawa ko para makapag-ipon ng pambayad sa aking mga utang. At hindi yon lingit sa kalaman ng nanay ko, Papa Dudu.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0093",
+   "hypothesis": "Mercedes. Parang pinagdugsong na. Kaya mahabang masyado yung boulevard dito.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0094",
+   "hypothesis": "Ito ang tanong, kaya mo ba talaga magpaganda sa loob na isang buwan?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0095",
+   "hypothesis": "Lagi ko nakikita sa GMA, di ba? Puro kontrabiday na inaano. Tapos nag-Valentina pa. Yung mga ganun, nakakatakot kasi.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0096",
+   "hypothesis": "Kasi parang nagustuhan pala yung amoy nung bit-bit niya. Sabi niya, kung gusto ng as nung to, ang amoy ng pagkain ko, paano kaya kung balutin ko?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0097",
+   "hypothesis": "Hindi ko po alam eh, nakalagay kasi sa plastic. Teka po. Ah! Sulat!",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0098",
+   "hypothesis": "Sa lahat ng mga hindi kapampangan, ang ibig sabihin ng asadong matwak, yung matuwas sa kapampangan is matanda.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0099",
+   "hypothesis": "O, ang lupit mo. Ganun talaga yun. Kayain natin siya. Kumuha siya ng si Charum Bulaklak. Sausaw natin sa ginawa natin si Buya Stoyo Calamansi.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0100",
+   "hypothesis": "Investigation pa yung mayroon pa yung patay. Tinanong namin sir kung nakuan nila sir, isabi naman nila sir, wala silang napansin kasi lasing daw sila ng gabi na yun.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0101",
+   "hypothesis": "Alimbawa, kasama yung isang chief engineer na nagtatrabaho sa barko.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0102",
+   "hypothesis": "Ang tanong ko lang, napakahaba ng kailangang panahon. Kasi parang ang nangyayari sa atin, magsisimula tayo.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0103",
+   "hypothesis": "Pero yung bigkas namin sa Ingles, hindi tunog Amerikano.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0104",
+   "hypothesis": "Ang pagtatanim ng pinya ay isang siyensya. Hindi ito basta-basta. Katunayan, iisipin nyo.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0105",
+   "hypothesis": "Siyempre kapag sinabing ginis ang munggo dapat may kamatis rin yan Para sakin mas gusto kong gamitin dito yung hinog na kamatis",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0106",
+   "hypothesis": "Dami-dami nating tuming dedinisin. Hindi to tayo magsisimula.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0107",
+   "hypothesis": "Yung pinapanood ko kasi, yung paboritong-paborito ko yung sisig sa tundo. Ganito nila hiwain. Yan eh. Alam ko yung marunong akong humiwa nung ganyan.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0108",
+   "hypothesis": "Sa kabila ng takot at panganib, mas pinanghahawakan ni Jessica ang kanyang pangarap.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0109",
+   "hypothesis": "Iling ni Sam pero sa loob-loob niya",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0110",
+   "hypothesis": "36 na taong gulang pa lang siya. Ang galing, diba?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0111",
+   "hypothesis": "Pag mga luma, kaya mo.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0112",
+   "hypothesis": "Oo nga, sabi ko, bakit naman andun si Catherine, si Alex naman, lahat ng mga kaganapan talagang kasama.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0113",
+   "hypothesis": "para sa akin. Iba to. Very, hindi alam ng lahat. Siyempre, pag sunset, unang naiisip, Murakay.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0114",
+   "hypothesis": "Sana kamukha mo, Ape. Sana kamukha nyo ni Blight. Ganun.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0115",
+   "hypothesis": "Prensa tayo ha. Maganda ka. Lagi mo isipin yan. Kaya na nga!",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0116",
+   "hypothesis": "Ayan! So, buka ng arte nito. Kukuha-kuha yung ka-art nito.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0117",
+   "hypothesis": "Tapos sila naman, siguradong nakakapagtagalog.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0118",
+   "hypothesis": "Noong kinasal kami, parang mas nakompleto ako nun eh.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0119",
+   "hypothesis": "ng Estados Unidos at Pilipinas.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0120",
+   "hypothesis": "Wala pa po ako nakikita.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0121",
+   "hypothesis": "Huwag hindi pa yung makahanap kaysa sa saldiko. Huwag ako na lang. Sorry, sorry.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0122",
+   "hypothesis": "Oo. Alam mo dapat yan, yung pisgi mo parang buwan.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0123",
+   "hypothesis": "Iba yung may magulang na...",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0124",
+   "hypothesis": "Kamusta ang benta and yung pagbili nyo ng baboy, karne, yung mga ganun?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0125",
+   "hypothesis": "yung pawisan na lalaki ulit tayo talaga palisan hindi yung pawis pa ako puso mataubo",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0126",
+   "hypothesis": "Pero kahit ganun, kahit may mga problema sa pagsasalin, sa pag-intindi ng konteksto,",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0127",
+   "hypothesis": "Sabi nga nila, ngayon, talagang lampas nao na ang tubig dito sa lugar na ito.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0128",
+   "hypothesis": "At yun ang isang malaking kritisismo laban sa kanya.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0129",
+   "hypothesis": "Hindi kasi ako masyadong nagagala.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0130",
+   "hypothesis": "Napapansin mo ba yung pagbabago ng Tarlac simula dati hanggang ngayon?",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0131",
+   "hypothesis": "Hindi lang bukod sa naging kaibigan ako ni Craigs, ay naging fan din ako nung magkakasama kayo ng nina-dadi lahat sa OKFind.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0132",
+   "hypothesis": "At tapos na kami kumain, nakapag-linked. Nasa kwarto na kami, syempre natulog ako, i-dip-id-lip, ganyan. Hindi kami buusap.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0133",
+   "hypothesis": "Solusyon ba talagang paglayo? Di para na ring sumuko si Mama.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0134",
+   "hypothesis": "Tuwing makikita ni na Jemsel at Marian ang inabandon ng gusali.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0135",
+   "hypothesis": "ang kanilang kinatatakutan na ranasan ng 10 taong gulang na si Adam. Nakulong siya sa Saba at nadeport sa Pilipinas kasama ang kanyang ama na si Lapsan.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0136",
+   "hypothesis": "Pagdating sa pagprito, nilalagay ko muna.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0137",
+   "hypothesis": "sa Pilipinas. At tatlong taon yung makalipas, 1995, nagkaroon ng bagong batas.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0138",
+   "hypothesis": "Wait up, wait up, wait up. I'm not, I'm not. That game! Uh, uh, uh.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0139",
+   "hypothesis": "Akong bahala sa kanila, hindi ko sila papabayaan.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0140",
+   "hypothesis": "Ngayon yung anak ko, labing isang taong gulang na at nagpapasalamat ako sa Diyos araw-araw.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0141",
+   "hypothesis": "na manipis na katulad nyan. Tapos puputunin lang natin yung dulo para pwede na kagad yung sibuyas.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0142",
+   "hypothesis": "Nagkakilala sila sa universidad, sa kolohiyo.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0143",
+   "hypothesis": "Parang nahimay ko naman na din po yung mga dapat at saka sa hindi dapat pakinggan.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0144",
+   "hypothesis": "na nakarinig. Tapos sabi niyo may nabanggit siya. Parang bigyan niyo po ako ng pigsa.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0145",
+   "hypothesis": "Natatakot sila na baka mawalan sila ng tubig sa lupo kasi binabantayan din sila.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0146",
+   "hypothesis": "Magaling ka naman tumakas Nico eh Huwag ka nalang magpakita utang na loob",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0147",
+   "hypothesis": "Meron siyang pinirmahan na batas.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0148",
+   "hypothesis": "Ako siguro pinaka-natutunan ko ang kasalanan ko. Wala akong time sa anak ko. Dato.",
+   "language": "tl"
+  },
+  {
+   "id": "filipino-0149",
+   "hypothesis": "Basta balanse, hindi sobra-sobra at dapat tagtarin mo rin yung katawan mo ng pag-inom ng tubig.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0000",
+   "hypothesis": "yung struktura ng sentence, yung word order.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0001",
+   "hypothesis": "White chocolate is not real chocolate. I'd like to look at it like white chocolate is chocolate. It's just anak salabas.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0002",
+   "hypothesis": "Ay, grabe ka. Thank you so much. And, isa lang sa siming ko, please abangan nyo na din ang video namin kay Bea. Sobrang may enjoy nyo.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0003",
+   "hypothesis": "Kailangan nakabook ng advance yung hotel mo. Kailangan nakabook ng advance yung return ticket mo.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0004",
+   "hypothesis": "So, syempre sa DJI, ang gamit ko ngayon ay ang DJI. Kaya nagagawa ko yung ganitong klase.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0005",
+   "hypothesis": "Yes. Ano siya? Yung action figure ng Bahamut. Bahamut. From Final Fantasy Advent Children.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0006",
+   "hypothesis": "Yung titulo, yung One More Chance.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0007",
+   "hypothesis": "Baby girl na din ako talaga for today. Gusto ko rin syempre mag-thank you sa SMall of Asia na pinayagan nila ako mag-vlog dito. Thank you!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0008",
+   "hypothesis": "3.30pm tapos na siya. Small firm lang po kami. So, yung firm namin is specializing in construction law.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0009",
+   "hypothesis": "Alam ko kasi yung mga ayaw niya, yung mga pabalito niya. We go way back kasi. Grade school pa kami makikilala. Di ba, best friend?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0010",
+   "hypothesis": "Si Will, 15, naging 15 kasi sabi niya siya yung nauna. Bakit kami 5k, tas mo siya din. Parang ganun!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0011",
+   "hypothesis": "God bless Kalungkit. To love and to serve.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0012",
+   "hypothesis": "Ikan ba ako magkakaoros para sa love life? May daming responsibilidad, oh. Diba siya.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0013",
+   "hypothesis": "So thank you very much. Napaikli yung vlog. Maraming pa sanang gagawin. But bago ang lahat, ako ay isang daddy papa ni Pinak. So thank you for watching the vlog.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0014",
+   "hypothesis": "Anong say mo sa barangay love stories na ito? Pagkwentohan natin sa comment section niyan.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0015",
+   "hypothesis": "Aminado ha. Aminado lang. Kasi talagang taga...",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0016",
+   "hypothesis": "Mas matured ka lang at buff. Obviously.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0017",
+   "hypothesis": "Bakit Japan? At saka, bakit Canada?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0018",
+   "hypothesis": "dahil sa Visiting Forces Agreement at parehong pangyayari noong 2005. Meron ding rape case sa Subic.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0019",
+   "hypothesis": "Like, yung moods natin, yung behavior natin, yung the way we act. Nakokontrol niya lahat yun.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0020",
+   "hypothesis": "So I'm gonna ask you, and you're promoting love, may forever pa?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0021",
+   "hypothesis": "Nasa grade 7, si Erica. At si Jessica naman, nasa grade 3.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0022",
+   "hypothesis": "So, dun yung unang naging way, bakit ako naging picture, hindi ko siya first choice.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0023",
+   "hypothesis": "That was also fresh from that experience of like my son saying that he wanted to be in a regular school na.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0024",
+   "hypothesis": "April ba ay kailan ulit makikita sa TV or babali?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0025",
+   "hypothesis": "Sa araw-araw po, ang nauubos po naming chicken ay nasa 2,700 pieces.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0026",
+   "hypothesis": "Miracle Water was found before the construction of Boutique Barriera Road, looking for a source of water to be used for the construction of the road.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0027",
+   "hypothesis": "ay ang mga Aztecs they were also the ones to introduce chocolate to the world amazing",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0028",
+   "hypothesis": "When you only get the corruption and never the resistance, all of these matter for how our people understand our history. The thing is, General Luna and Goyo ang Batang General",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0029",
+   "hypothesis": "Ako, nagsiselos over my dead body.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0030",
+   "hypothesis": "Again, tatay no judgment but I saw you.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0031",
+   "hypothesis": "Emotional damage! Emotional damage! Yes, and of course, we have a lot of offerings sa ating pag-uso.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0032",
+   "hypothesis": "Hindi, sa ano lang, sa school lang, parang bagang basic na course.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0033",
+   "hypothesis": "O siya, tama na yan. O JR, magmerienda ka muna nitong cake at juice.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0034",
+   "hypothesis": "Kaya nga to the point na buong family na namin umiinom na kahit bata, pwede 6 months and up.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0035",
+   "hypothesis": "Malaki talaga yung naging damage. Makit ko kaya siya gumuko after two years of being built?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0036",
+   "hypothesis": "At syempre meron ding olive oil, madaming olive oil.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0037",
+   "hypothesis": "tungkol sa mga sinabi daw niya doon. And I see bits and pieces, and I remember. And as much as I can, tinatry kong maging accurate ang mga sagot ko.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0038",
+   "hypothesis": "na lumalapag at bumabiahe from Clark, I mean.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0039",
+   "hypothesis": "After 2 years na pagbisita ng Team Canlas, ang presyo namin is still P199.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0040",
+   "hypothesis": "mula sa Clark Air Base at sa Subic.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0041",
+   "hypothesis": "I'm excited because we're sharing more than being a philanthropist.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0042",
+   "hypothesis": "At meron ding mga problema sa mental health.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0043",
+   "hypothesis": "So ngayon, syempre, nagbabago. Pwede na yung manligaw digitally. So pwedeng sa text, pwedeng video call.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0044",
+   "hypothesis": "November 2024, nung unang nag-cruise ang landas ni Namika at Carl sa isang birthday party.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0045",
+   "hypothesis": "Sige na. Thank you again, Caps Nation. Batiin nyo talaga si Caps Chest ng happy, happy birthday. Happy 38th birthday, Caps Chest. Nakabil ko na po.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0046",
+   "hypothesis": "From the supplier itself, dapat alamin mo na kung anong quality ang gusto mo.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0047",
+   "hypothesis": "Ah! Oh, this time we have the really very good, very, very good taedito because...",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0048",
+   "hypothesis": "kapag merong romanticong experience o exciting na experience.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0049",
+   "hypothesis": "93%, 93% yung dropout rate sa DARMM.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0050",
+   "hypothesis": "We've also done, what do you call this, the open word? Oh yeah, poetry. Poetry.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0051",
+   "hypothesis": "Of course, we're very thankful to all our staff. Parati namin sinasabi sa mga staff na ayusin natin everyday ang trabaho.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0052",
+   "hypothesis": "Tapos mahalaga yung ratio ng balat sa karne, yung skin to meat ratio.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0053",
+   "hypothesis": "Girl, you're so weak. Kung ako sayo, I'd tear that girl apart.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0054",
+   "hypothesis": "Halimbawa, noong 2005, noong SEA Games, Southeast Asian Games,",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0055",
+   "hypothesis": "And since we all know that, I think parang since that's our forte, then why not? Why not highlight it and put it out there?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0056",
+   "hypothesis": "Pero meron yung tinatawag na next wave series.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0057",
+   "hypothesis": "mag-enjoy manonood. Pieste! Pieste, G. Wow! Wow!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0058",
+   "hypothesis": "Hello! Hi po! Hi po, Lola! Hi po, Lola! Si Karen po! Si Karen!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0059",
+   "hypothesis": "Ito na po yung ano, after 50 years, mapapakyaw and times 2 ang halaga ng paninda ni nanay.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0060",
+   "hypothesis": "May OFW po pero hindi po sa US.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0061",
+   "hypothesis": "na re-represent sa 21st century. Halimbawa si Catriona Gray ng Miss Universe.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0062",
+   "hypothesis": "That is a beautiful, is that even a moth? I think it's a butterfly. Ganda niya. Anyway, so high ceiling and wala ng glass, wala ng partition kasi laki yung space eh. Nakababa yung shower area though but a little bit so that the water doesn't flow to the rest of the area.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0063",
+   "hypothesis": "Doon po sa Tuguegaraw sir, more din siguro or less than 200 na po yung pansitan doon. Pero walang kasawaan po yung tao doon. Everyday po talaga, ah, punuan po.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0064",
+   "hypothesis": "Nasa 300 kilometers ang biyahe. Mga around 9 hours to 12 hours.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0065",
+   "hypothesis": "America's Got Talent, sabi ni Yo Bab, ay tama! Kulang ako ng siga. Hindi ko po kasi sure na kailan ko tay-tay gan.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0066",
+   "hypothesis": "Ano to? Tubig lang sakin tapos super-sized mocha frapp yung sayo?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0067",
+   "hypothesis": "Mas marami akong pwedeng ikutin sa Pilipinas in terms ng paghahatid ng tulong kasi ako ngayon yung Director for Community Service for our particular party list.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0068",
+   "hypothesis": "Pa! Oh my god! Kayaan ka patapaday!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0069",
+   "hypothesis": "But what makes you different, Oliver, from the other boy bands out there?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0070",
+   "hypothesis": "Juan Carlos Labajo at J.K. Labajo ay TAMO!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0071",
+   "hypothesis": "and my dogs shake, like super shake, and they cling on to the corner of, and the darkest room, and they also...",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0072",
+   "hypothesis": "Ito, nyan mo kepera ko eh. Boil natin ya.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0073",
+   "hypothesis": "We're having the same purpose. You're documenting food, Pilipinas, ming na limang bansa. So, same purpose, same goal. Mas marami tayo, mas... Tama.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0074",
+   "hypothesis": "Okay, so aside from the main museum where all the exhibit rooms are, we also have the Balayatu. This was an annex building at the back.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0075",
+   "hypothesis": "Yeah. No, actually, because she said it really minimizes the pain. She had me at that. It's the first sentence lang. I said, you got me, girl.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0076",
+   "hypothesis": "Magandang hapon, Ma'am Mary Grace and Ma'am Nora. Our deepest condolences po sa inyong pamilya.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0077",
+   "hypothesis": "So I think they're more on that niche. But my younger one, however, the 10-year-old, nasanay siya for me to like show him talaga do unboxing and all.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0078",
+   "hypothesis": "I think it's important lang when deep frying like this na talagang malalim talaga yung oil.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0079",
+   "hypothesis": "They also engage the government of Malaysia constantly.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0080",
+   "hypothesis": "Innocent? Yes. I'm always gonna be here for you. But only as a friend.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0081",
+   "hypothesis": "Apple D. App. Okay. Sayang, sayang. Apple D. App. Alright. Ang tanong.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0082",
+   "hypothesis": "Sino mag-baby kay ikaw? Uy! Ito!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0083",
+   "hypothesis": "Tapos kapag B2 na ako, kapag C1 na ako, o kapag fluent na ako,",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0084",
+   "hypothesis": "Ay, hindi mo ka pula mukha mo. I would love to. Sabi ko, I would be so honored. I'm so happy.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0085",
+   "hypothesis": "So, meron siyang parang digital na trabaho, online.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0086",
+   "hypothesis": "Yung timeline ko took a lot longer kasi nga merong challenges, diba? Again, we had to move to America.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0087",
+   "hypothesis": "So mas gusto niyang meron siyang control.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0088",
+   "hypothesis": "Anong toy gusto mo po? Juice na!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0089",
+   "hypothesis": "kasi meron akong foreign language. So, ang tinikap ko po nun is Spanish. So, mas madali ko pong, I think, mas madali sa akin na natake ko yung Spanish.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0090",
+   "hypothesis": "Ikaw naman? Wag mo na ako ipo. Makakasing edad lang tayo eh. You know what? I think all three of us are gonna be a hit.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0091",
+   "hypothesis": "Okay, being voted as the least in time na yun, as the least desirable, did it really affect you? Parang, sya tayo ko na.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0092",
+   "hypothesis": "Pagkatapos bumiyahin ang mga 20-25 minutes, baka nga 30 eh.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0093",
+   "hypothesis": "Pero, baka sensitive mo. I just want to get to know Micah better, ha?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0094",
+   "hypothesis": "Dorben, thank you very much. Pacifica, always. Di na mawala.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0095",
+   "hypothesis": "Grabe naman! Ano yan, wall of shame?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0096",
+   "hypothesis": "So hindi murder pero homicide. Dahil sa heat of passion. Sabi.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0097",
+   "hypothesis": "Parang for me, yung mental health is equally important as our physical health.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0098",
+   "hypothesis": "4.7 million pesos ang inilaang pondo nitong 2021.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0099",
+   "hypothesis": "So lahat ng subject Ikaw yung magtuturo",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0100",
+   "hypothesis": "a lot of like who I was before and a lot of I'm still becoming. Yun yung nakikita ko sa taon ko na to.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0101",
+   "hypothesis": "Well, Christian ako ma since birth. Kasi yung mommy ko, Christian talaga. So, pinalaki kami talaga may takot sa Diyos. At saka dapat relax lang sa buhay.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0102",
+   "hypothesis": "Nauubos po na chicken, 2,700 pieces. Tuloy-tuloy ang pirito, pagkahango, pwede nang mamili.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0103",
+   "hypothesis": "o ng Municipal Environment and Natural Resources Office nagsagawa ng initial microbiological test.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0104",
+   "hypothesis": "today's Mexican cooking techniques and ingredients. Kauna-unahan naglutor ng kamatis.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0105",
+   "hypothesis": "So I was finally able to watch it last night. And to be honest, going into the movie theaters, I was excited to see Quezon. Kasi, you know, I loved General Luna. And I enjoyed Goyo ang Batang General.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0106",
+   "hypothesis": "We go way back kasi. Grade school pa kami makikilala. Di ba, best friend?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0107",
+   "hypothesis": "Okay guys, maraming salamat sa pananood. If you guys enjoyed, please subscribe and bye!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0108",
+   "hypothesis": "winner na winner. And then also, the way they're doing it, very strict yung kanilang food sanitation practices.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0109",
+   "hypothesis": "Pero the best naman, mga ginataan na pagkain, sir.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0110",
+   "hypothesis": "JR, kamusta ang daddy at mami mo?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0111",
+   "hypothesis": "So magsa-snaps na kami, the time is up 5 p.m. Siyempre, hindi pwede yung mga berry. Tapos yung ubas namin, green na kiwi berry.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0112",
+   "hypothesis": "At ang appeal ng kanilang LGU ay sana ma-repair itong flood control project na ito.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0113",
+   "hypothesis": "naalala ko yung parang third grade o parang ganon, meron silang isang subject na critical thinking.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0114",
+   "hypothesis": "I was there with her. I deserved that seat in the front.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0115",
+   "hypothesis": "And nagkaroon na rin kami ng Jollibee last, like, few years ago lang.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0116",
+   "hypothesis": "D-I-M-Z, mga kapatletor Z, Arsene, Vibra, DIMS. Yun yung makikita nyo sa Google Maps.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0117",
+   "hypothesis": "Nagkaroon ng 7.8 magnitude na earthquake na lindol sa Central Luzon.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0118",
+   "hypothesis": "Halimbawa, mayroong na-publish na study sa Journal of Archaeological Science",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0119",
+   "hypothesis": "Sa mga social media, meron na rin mga nanliligaw.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0120",
+   "hypothesis": "at nasa 60% nito ay domestic violence at intimate partner violence.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0121",
+   "hypothesis": "Hindi ko alam eh. Sa mga oras na ito, wala pang konkretong plano. Pero ang pinaka-konkreto lang naman na plano is on vacation ko. Anting kalas pag alas ang video na ito. So siguro after one week or five...",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0122",
+   "hypothesis": "sad to say, na hindi naman lahat na tayong mga Pilipino minsan, minsan naman, at I'm not saying na",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0123",
+   "hypothesis": "Okay? Hindi okay. Lahat ng nangyari, hindi okay.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0124",
+   "hypothesis": "So, merong tip sa pinakataas.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0125",
+   "hypothesis": "Yung susunod yung sa Central Visayas, 60% o 60% yung dropout rate.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0126",
+   "hypothesis": "connected sila itong wifi, meron ding cable channels, at oh, boring na naman dito, Alexa, turn on dining.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0127",
+   "hypothesis": "that makes Sasha feel small.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0128",
+   "hypothesis": "Pangulo at dating diktador na Ferdinand Marcos Sr.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0129",
+   "hypothesis": "The One Secret. Wow, it's a whole bunch of different things. But I think, parang when you stop thinking about, this is at least me. It's become automatic with me.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0130",
+   "hypothesis": "So, yung mga empleyado, yung customer care, technical support para sa mga kumpanya.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0131",
+   "hypothesis": "There was a power struggle din inside that nobody knows. May nangyari dyan sa loob.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0132",
+   "hypothesis": "And I think just like Hawaii, you know, you will find here.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0133",
+   "hypothesis": "Ang galang ng trip na to. Sobrang saya. It's meant to be.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0134",
+   "hypothesis": "So wala sa pamilya nyo yung mga OFW, ganun.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0135",
+   "hypothesis": "Si Erica Kasupanan, yung nanalo ng Survivor. Season 41, si John Chu, yung director ng Crazy Rich Asians.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0136",
+   "hypothesis": "Happy anniversary sa favorite wife ng Chavo Football. Chavo Football talaga. Next scene tayo. Tara, let's go. Tingnan nyo. Mamaya-mamaya nang maubos. Maraming nang maubos. Tingnan nyo.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0137",
+   "hypothesis": "Tapos sir, nag-aaral din yung 10 years old.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0138",
+   "hypothesis": "Anyway, I don't care what other people think, okay? Yun na lang.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0139",
+   "hypothesis": "with your hilaw na balai, ikama.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0140",
+   "hypothesis": "Ito yung fitting room. Let's go! Mika yun lang!",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0141",
+   "hypothesis": "Naglalagay din po kami sa tray para sa mga retail. Usually po everyday, siguro nakaka 6,000 to 7,000 pieces po kami ng cheese bread.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0142",
+   "hypothesis": "Sir, magandang hapon po sa inyo. Sir, ano na po ba sir yung update dito, sir, sa case ni Sir Romeo Mabato?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0143",
+   "hypothesis": "For trends, I think we are going towards a lot of peptides this year. I think that's the one talaga.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0144",
+   "hypothesis": "Then, a bit of bukayo. Yan lang. Tapos, roll it. Pagka-fold mo ganyan, kinda tuck this in to seal the whole thing. It's gonna look like that.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0145",
+   "hypothesis": "make me a challenge that I was also captured by police and I went to the detention. Mostly Filipinos didn't know how to write names.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0146",
+   "hypothesis": "Aww, you canceled your plans for me? Love mo talaga ako, no?",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0147",
+   "hypothesis": "Parang ang Jay-Z na Kanye West.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0148",
+   "hypothesis": "Okay, okay. Okay, okay. Okay, okay.",
+   "language": "tl"
+  },
+  {
+   "id": "taglish-0149",
+   "hypothesis": "So, yung isang lingwahe, B1 muna, tapos yung isa, A1. So, mayroong konting lag time.",
+   "language": "tl"
+  }
+ ]
+}

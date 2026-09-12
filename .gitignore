@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# benchmark data & envs (large, re-creatable with bench/build_subset.py)
+/bench/data/
+/bench/.venv/
+/public/bench-data
+__pycache__/
+
+# local database (accounts, sessions, saved transcripts)
+/data/
+.gstack/
+
+# vercel CLI link + pulled env
+.vercel

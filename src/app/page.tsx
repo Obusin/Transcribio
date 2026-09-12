@@ -1,69 +1,129 @@
-import Image from "next/image";
+import { SiteFooter, SiteHeader } from "@/components/marketing/chrome";
+import {
+  CtaBand,
+  FaqJsonLd,
+  FaqSection,
+  HowItWorks,
+  PricingSection,
+  RelatedTools,
+  TrustRow,
+  UseCaseStrip,
+  VersusCloud,
+} from "@/components/marketing/sections";
+import { ToolCard } from "@/components/marketing/tool-card";
+import { Container, Display, Eyebrow } from "@/components/marketing/ui";
+import { PRICING, TOOLS } from "@/lib/marketing/funnel";
+
+// The home page's own FAQ is the general set; the tool pages carry their own.
+const HOME_FAQS = TOOLS[0].faqs;
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+    <div className="flex flex-1 flex-col">
+      <SiteHeader />
+
+      <main className="flex-1">
+        {/* Hero: the tool is the hero. Pitch on the left, drop zone on the right. */}
+        <Container className="grid items-center gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
+          <div>
+            <div className="flex items-center gap-2.5">
+              <span aria-hidden className="h-2 w-2 rounded-full bg-accent" />
+              <span className="text-sm font-bold text-ink">Transcribio</span>
+              <span aria-hidden className="text-label">—</span>
+              <span className="text-sm text-muted">English · Filipino · Taglish</span>
+            </div>
+
+            <Display
+              className="mt-6"
+              head="Transcribe your videos"
+              accent="without uploading them"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">
+              Drop in a meeting, interview or video. Your computer does the transcription, so the recording
+              never leaves it. Taglish stays Taglish — we write down what was actually said, not a translation.
+            </p>
+          </div>
+
+          <div className="lg:justify-self-end lg:w-full lg:max-w-md">
+            <ToolCard dropLabel="Audio / video file" formats="MP4, MOV, MKV, WEBM, MP3, M4A, WAV, AAC, OGG, OPUS — any length" />
+          </div>
+        </Container>
+
+        {/* Kept out of the hero grid so the tool card stays above the fold on phones. */}
+        <Container className="pb-4">
+          <TrustRowLeft />
+        </Container>
+
+        <Container className="py-8">
+          <TrustRow />
+        </Container>
+
+        <HowItWorks />
+        <VersusCloud />
+        <UseCaseStrip />
+
+        {/* SEO prose — the "About" block every TurboScribe tool page carries. */}
+        <Container className="py-20">
+          <div className="mx-auto max-w-3xl">
+            <Eyebrow>About Transcribio</Eyebrow>
+            <div className="mt-6 space-y-5 text-base leading-relaxed text-muted">
+              <p>
+                Transcribio is a transcription tool that runs entirely in your browser. There is no upload
+                step: the speech model is downloaded to your machine once, and from then on every recording you
+                transcribe is read off your own disk and processed by your own hardware.
+              </p>
+              <p>
+                It was built for Philippine audio first. Whisper has a well-known failure mode where Filipino
+                speech decoded under an English setting comes back translated into English rather than
+                transcribed — which is useless if you needed the actual words. Transcribio selects the Filipino
+                decoder explicitly, so Tagalog stays Tagalog and code-switching survives into the transcript.
+              </p>
+              <p>
+                Transcripts are timestamped. Click any line to jump to that moment in the recording, edit what
+                needs editing, and export as PDF, Word, plain text, or SRT and VTT subtitles. The raw
+                transcript is kept immutable underneath your edits, so the engine&rsquo;s original output is always
+                recoverable. There is a separate{" "}
+                <a className="text-accent underline decoration-line-strong underline-offset-4" href="/convert">
+                  PDF to Word converter
+                </a>{" "}
+                that works the same way — locally, with nothing uploaded.
+              </p>
+              <p>
+                The free plan covers {PRICING.freeDailyMinutes} minutes of audio a day and needs no credit
+                card. Because the work happens on your device rather than on rented GPUs, that free plan is the
+                real product, not a trial.
+              </p>
+            </div>
+          </div>
+        </Container>
+
+        <FaqSection faqs={HOME_FAQS} n="04" />
+        <PricingSection n="05" />
+        <RelatedTools slugs={TOOLS.slice(0, 4).map((t) => t.slug)} heading="Free tools" />
+        <CtaBand />
       </main>
+
+      <SiteFooter />
+      <FaqJsonLd faqs={HOME_FAQS} />
     </div>
+  );
+}
+
+/** Left-aligned variant of the trust chips for the hero column. */
+function TrustRowLeft() {
+  return (
+    <dl className="grid gap-6 sm:grid-cols-3">
+      {[
+        ["Nothing uploaded", "Processed in your browser. Files stay on your device."],
+        ["Built for how we talk", "English–Filipino code-switching kept exactly as spoken."],
+        ["Timestamps & subtitles", "Jump to any line. Export TXT, SRT or VTT."],
+      ].map(([t, d]) => (
+        <div key={t}>
+          <dt className="text-sm font-extrabold tracking-[-0.02em] text-ink">{t}</dt>
+          <dd className="mt-1.5 text-sm leading-relaxed text-muted">{d}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
