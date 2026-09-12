@@ -1,0 +1,8 @@
+# Never upload: benchmark corpora and virtualenvs are ~14 GB of local-only data.
+bench/
+data/
+docs/
+.next/
+node_modules/
+*.tsbuildinfo
+.gstack/
