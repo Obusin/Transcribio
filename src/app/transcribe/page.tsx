@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { BetaBanner } from "@/components/beta-banner";
 import { FeedbackWidget } from "@/components/feedback";
 import { AppHeader, TranscribeApp } from "@/components/transcribe-app";
 import { ACCOUNTS_ENABLED } from "@/lib/deployment";
@@ -17,6 +18,7 @@ export default async function TranscribePage() {
 
   return (
     <div className="flex flex-1 flex-col">
+      <BetaBanner inApp />
       <AppHeader email={user?.email ?? null} />
       <TranscribeApp userId={user?.id ?? null} />
       <FeedbackWidget />

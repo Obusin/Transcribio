@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { BetaBanner } from "@/components/beta-banner";
+import { FeedbackWidget } from "@/components/feedback";
 import { FOOTER_TOOLS, TOOLS } from "@/lib/marketing/funnel";
 import { ACCOUNTS_ENABLED } from "@/lib/deployment";
 import { FOOTER_USE_CASES, USE_CASES } from "@/lib/marketing/use-cases";
@@ -29,7 +31,7 @@ const NAV = [
   { href: "/tools", label: "Tools" },
   { href: "/use-cases", label: "Use cases" },
   { href: "/tools/taglish-transcription", label: "Taglish" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/#free", label: "Free beta" },
   { href: "/convert", label: "PDF to Word" },
 ];
 
@@ -39,8 +41,12 @@ const NAV = [
  */
 export function SiteHeader() {
   return (
-    // Opaque, not translucent: the page runs full-bleed dark bands underneath
-    // and a blurred bar over navy reads as a smudge.
+    <>
+    <BetaBanner />
+    {/* Feedback on every marketing page too: "what stopped you trying it" is worth hearing. */}
+    <FeedbackWidget />
+    {/* Opaque, not translucent: the page runs full-bleed dark bands underneath
+        and a blurred bar over navy reads as a smudge. */}
     <header className="sticky top-0 z-50 border-b border-line bg-paper">
       <Container className="flex h-[68px] items-center justify-between gap-4">
         <Wordmark />
@@ -74,7 +80,7 @@ export function SiteHeader() {
 
       {/*
        * Phones get the nav as a scrollable strip instead of losing it. Without
-       * this the only route to /pricing and the other tools is the footer.
+       * this the only route to the tools and use cases is the footer.
        */}
       <div className="border-t border-line md:hidden">
         <nav className="flex gap-5 overflow-x-auto px-6 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -90,6 +96,7 @@ export function SiteHeader() {
         </nav>
       </div>
     </header>
+    </>
   );
 }
 
@@ -153,7 +160,7 @@ export function SiteFooter() {
                 { href: "/transcribe", label: "Open the app" },
                 { href: "/tools", label: "All tools" },
                 { href: "/use-cases", label: "All use cases" },
-                { href: "/pricing", label: "Pricing" },
+                { href: "/#free", label: "Free while testing" },
                 { href: "/#how", label: "How it works" },
                 { href: "/#faq", label: "FAQ" },
               ].map((l) => (

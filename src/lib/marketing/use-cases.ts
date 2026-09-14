@@ -13,7 +13,7 @@
  *   recording is never transmitted, which is verifiable.
  */
 
-import { PRICING, type Faq } from "./funnel";
+import type { Faq } from "./funnel";
 
 export type UseCase = {
   slug: string;
@@ -46,7 +46,7 @@ const PRIVACY_FAQ: Faq = {
 
 const COST_FAQ: Faq = {
   q: "What does it cost?",
-  a: `The free plan covers ${PRICING.freeDailyMinutes} minutes of audio a day with every feature included and no credit card. Your own computer does the processing, so the free tier is the real product rather than a trial.`,
+  a: "Nothing, while we're testing it — no sign-up, no credit card, no daily limit. Your own computer does the processing. All we ask is feedback through the Give feedback button.",
 };
 
 export const USE_CASES: UseCase[] = [
@@ -161,7 +161,7 @@ export const USE_CASES: UseCase[] = [
       },
       {
         t: "Free at clinic scale",
-        d: `${PRICING.freeDailyMinutes} minutes a day at no cost, because your own machine does the work.`,
+        d: "Free while in testing, with no daily limit — your own machine does the work.",
       },
     ],
     workflow: [
@@ -211,7 +211,7 @@ export const USE_CASES: UseCase[] = [
     outcomes: [
       {
         t: "Free for the volume students have",
-        d: `${PRICING.freeDailyMinutes} minutes a day, no credit card, no trial that expires. The transcription runs on your own laptop.`,
+        d: "Free while in testing, with no daily limit and no sign-up. The transcription runs on your own laptop.",
       },
       {
         t: "Taglish lectures stay Taglish",
@@ -244,7 +244,7 @@ export const USE_CASES: UseCase[] = [
     faqs: [
       {
         q: "Is it really free for students?",
-        a: `Yes. ${PRICING.freeDailyMinutes} minutes a day with everything included. Your laptop does the processing, so there is no cost for us to pass on.`,
+        a: "Yes, free while we're testing it, with no daily limit. Your laptop does the processing, so there is no server cost behind it.",
       },
       {
         q: "Will it work on a school laptop?",

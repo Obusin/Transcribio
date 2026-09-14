@@ -10,19 +10,12 @@
  * Nothing here is fetched; it is a static module so every tool page prerenders.
  */
 
-export const PRICING = {
-  /** Free plan daily budget, in minutes. Matches plans.daily_transcription_seconds (1800) in docs/ARCHITECTURE.md §4. */
-  freeDailyMinutes: 30,
-  /**
-   * Placeholder prices. Transcription runs on the visitor's own device, so the
-   * marginal cost of a minute is zero — these are positioning numbers, not cost
-   * recovery. Change them here and every funnel page follows.
-   */
-  proMonthly: "₱349",
-  proYearly: "₱2,988",
-  proYearlyMonthlyEquivalent: "₱249",
-  yearlySavingPercent: 29,
-} as const;
+/**
+ * No pricing while in testing (decided 2026-09-14). Everything is free and
+ * unlimited; feedback is what's asked for in return. When billing is decided,
+ * the quota design is still in docs/ARCHITECTURE.md §4.
+ */
+export const FREE_WHILE_TESTING = true;
 
 export type Faq = { q: string; a: string };
 
@@ -51,7 +44,7 @@ export type ToolPage = {
 const SHARED_FAQS: Faq[] = [
   {
     q: "Is it really free?",
-    a: `Yes. Transcription happens on your own computer, so there is no server bill to pass on. The free plan covers ${PRICING.freeDailyMinutes} minutes of audio a day. Pro lifts the daily limit for people who transcribe in bulk.`,
+    a: "Yes — completely free while we test it. No sign-up, no credit card and no daily limit. Your own computer does the transcription, so there is no server bill behind it. In return we ask for feedback: the Give feedback button at the bottom right goes straight to us.",
   },
   {
     q: "Where do my files go?",
@@ -340,8 +333,8 @@ export const TRUST_CHIPS = [
   "English · Filipino · Taglish",
   "PDF, Word, TXT, SRT, VTT",
   "Timestamped transcripts",
-  `${PRICING.freeDailyMinutes} free minutes a day`,
-  "No credit card",
+  "Free while in testing",
+  "No sign-up",
 ] as const;
 
 /** Cross-tool links for the footer farm, including the separate converter. */

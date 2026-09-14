@@ -4,7 +4,7 @@ import {
   FaqJsonLd,
   FaqSection,
   HowItWorks,
-  PricingSection,
+  FreeBetaSection,
   RelatedTools,
   TrustRow,
   UseCaseStrip,
@@ -12,7 +12,7 @@ import {
 } from "@/components/marketing/sections";
 import { ToolCard } from "@/components/marketing/tool-card";
 import { Container, Display, Eyebrow } from "@/components/marketing/ui";
-import { PRICING, TOOLS } from "@/lib/marketing/funnel";
+import { TOOLS } from "@/lib/marketing/funnel";
 
 // The home page's own FAQ is the general set; the tool pages carry their own.
 const HOME_FAQS = TOOLS[0].faqs;
@@ -90,16 +90,16 @@ export default function Home() {
                 that works the same way — locally, with nothing uploaded.
               </p>
               <p>
-                The free plan covers {PRICING.freeDailyMinutes} minutes of audio a day and needs no credit
-                card. Because the work happens on your device rather than on rented GPUs, that free plan is the
-                real product, not a trial.
+                It&rsquo;s free while we test it &mdash; no sign-up, no credit card and no daily limit. Because the
+                work happens on your device rather than on rented GPUs, there&rsquo;s no server bill behind it. All
+                we ask in return is feedback: tell us what broke and what you wish it did.
               </p>
             </div>
           </div>
         </Container>
 
         <FaqSection faqs={HOME_FAQS} n="04" />
-        <PricingSection n="05" />
+        <FreeBetaSection n="05" />
         <RelatedTools slugs={TOOLS.slice(0, 4).map((t) => t.slug)} heading="Free tools" />
         <CtaBand />
       </main>

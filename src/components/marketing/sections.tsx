@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { type Faq, PRICING, TOOLS, TRUST_CHIPS } from "@/lib/marketing/funnel";
+import { type Faq, TOOLS, TRUST_CHIPS } from "@/lib/marketing/funnel";
 import { USE_CASES } from "@/lib/marketing/use-cases";
 import { Chip, Container, CtaLink, Eyebrow, Panel, SectionHead } from "./ui";
 
@@ -169,83 +169,72 @@ export function FaqJsonLd({ faqs }: { faqs: Faq[] }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }} />;
 }
 
-const FREE_FEATURES = [
-  `${PRICING.freeDailyMinutes} minutes of audio a day`,
+const INCLUDED = [
+  "Unlimited transcription — no daily cap",
   "Every language mode, including Taglish",
   "All exports — PDF, Word, TXT, SRT, VTT",
   "Transcript editor and Reviewer",
-  "Files never leave your device",
-];
-
-const PRO_FEATURES = [
-  "No daily minute limit",
-  "Everything in Free",
-  "Save transcripts to your account",
-  "History synced across your devices",
-  "Priority support from OBU Studio",
+  "Paste-a-link import from Drive and Dropbox",
+  "No sign-up and no credit card",
 ];
 
 /**
- * Pricing. The free tier's daily budget mirrors plans.daily_transcription_seconds
- * in docs/ARCHITECTURE.md §4 so the funnel and the (unbuilt) quota agree.
+ * Free while testing. This replaced the pricing section on 2026-09-14: there
+ * are no plans or prices anywhere on the site until billing is decided, and the
+ * one thing asked of people in return is feedback.
  */
-export function PricingSection({ n = "04" }: { n?: string }) {
+export function FreeBetaSection({ n = "04" }: { n?: string }) {
   return (
     <Container className="py-20">
-      <div id="pricing" className="scroll-mt-24 text-center">
-        <Eyebrow n={n}>Pricing</Eyebrow>
-        <SectionHead className="mt-5" head="Free because your computer" accent="does the work" />
+      <div id="free" className="scroll-mt-24 text-center">
+        <Eyebrow n={n}>Free while we test it</Eyebrow>
+        <SectionHead className="mt-5" head="Everything is free" accent="while we're testing" />
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted">
-          There are no GPUs to rent, so the free plan is genuinely free rather than a trial. Pro exists for
-          people transcribing in bulk every day.
+          No plans, no limits, no sign-up. We&apos;re still improving Transcribio, so the only thing we ask in
+          return is your honest feedback.
         </p>
       </div>
 
       <div className="mx-auto mt-14 grid max-w-4xl gap-6 md:grid-cols-2">
         <div className="rounded-panel border border-line bg-surface p-8 shadow-soft">
-          <p className="eyebrow text-label">Free</p>
-          <p className="mt-4 text-5xl font-extrabold tracking-[-0.045em] text-ink">₱0</p>
-          <p className="mt-2 text-sm text-muted">No credit card. No trial clock.</p>
+          <p className="eyebrow text-label">What you get</p>
+          <p className="mt-4 text-5xl font-extrabold tracking-[-0.045em] text-ink">Free</p>
+          <p className="mt-2 text-sm text-muted">During testing. Everything included.</p>
           <ul className="mt-7 space-y-3">
-            {FREE_FEATURES.map((f) => (
+            {INCLUDED.map((f) => (
               <li key={f} className="flex gap-2.5 text-sm leading-relaxed text-muted">
                 <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                 {f}
               </li>
             ))}
           </ul>
-          <CtaLink href="/transcribe" variant="ghost" className="mt-8 w-full">
+          <CtaLink href="/transcribe" className="mt-8 w-full">
             Start transcribing
           </CtaLink>
         </div>
 
         <div className="rounded-panel border border-deep bg-deep bg-gradient-to-b from-deep to-deeper p-8 shadow-float">
-          <div className="flex items-center justify-between">
-            <p className="eyebrow text-inverse-soft">Pro</p>
-            <span className="eyebrow rounded-full bg-accent px-2.5 py-1 text-white">
-              Save {PRICING.yearlySavingPercent}%
-            </span>
-          </div>
-          <p className="mt-4 text-5xl font-extrabold tracking-[-0.045em] text-inverse">
-            {PRICING.proYearlyMonthlyEquivalent}
-            <span className="text-base font-bold tracking-normal text-inverse-soft"> / month</span>
-          </p>
-          <p className="mt-2 text-sm text-inverse-soft">
-            {PRICING.proYearly} billed yearly, or {PRICING.proMonthly} month to month.
+          <p className="eyebrow text-inverse-soft">What we ask</p>
+          <p className="mt-4 text-4xl font-extrabold tracking-[-0.045em] text-inverse">Tell us what to fix</p>
+          <p className="mt-4 text-sm leading-relaxed text-inverse-soft">
+            Use the <strong className="text-inverse">Give feedback</strong> button at the bottom right of any page.
+            It takes a minute and goes straight to the people building this.
           </p>
           <ul className="mt-7 space-y-3">
-            {PRO_FEATURES.map((f) => (
+            {[
+              "It crashed, froze or was slow on your computer",
+              "It misheard words, or got Taglish wrong",
+              "Something was confusing or hard to find",
+              "A feature you wish it had",
+            ].map((f) => (
               <li key={f} className="flex gap-2.5 text-sm leading-relaxed text-inverse-soft">
                 <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-lift" />
                 {f}
               </li>
             ))}
           </ul>
-          <CtaLink href="/transcribe" variant="white" className="mt-8 w-full">
-            Start free, upgrade later
-          </CtaLink>
-          <p className="mt-3 text-center text-xs text-inverse-soft">
-            Billing is not switched on yet — the free plan is the whole product today.
+          <p className="mt-7 text-xs leading-relaxed text-inverse-soft">
+            Feedback sends what you type plus basic browser info. Your recordings and transcripts are never sent with it.
           </p>
         </div>
       </div>
@@ -258,18 +247,18 @@ export function CtaBand() {
   return (
     <Container>
       <Panel tone="deep" className="px-6 py-16 text-center sm:px-12">
-        <Eyebrow inverse>Ready when you are</Eyebrow>
+        <Eyebrow inverse>Free while we test it</Eyebrow>
         <SectionHead className="mt-5" inverse head="Your first transcript" accent="is a drag and a drop" />
         <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-inverse-soft">
-          {PRICING.freeDailyMinutes} free minutes a day, no credit card, and the recording never leaves your
-          computer.
+          Free during testing, no sign-up, and the recording never leaves your computer. Try it, then tell us
+          what to improve.
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <CtaLink href="/transcribe" variant="white">
             Start transcribing free
           </CtaLink>
-          <CtaLink href="/pricing" variant="ghostInverse">
-            See pricing
+          <CtaLink href="/#free" variant="ghostInverse">
+            Why it&apos;s free
           </CtaLink>
         </div>
       </Panel>

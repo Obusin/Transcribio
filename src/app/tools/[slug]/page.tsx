@@ -6,7 +6,7 @@ import {
   FaqJsonLd,
   FaqSection,
   HowItWorks,
-  PricingSection,
+  FreeBetaSection,
   RelatedTools,
   TrustRow,
   VersusCloud,
@@ -92,7 +92,7 @@ export default async function ToolPage({ params }: PageProps<"/tools/[slug]">) {
         </Container>
 
         <FaqSection faqs={tool.faqs} />
-        <PricingSection />
+        <FreeBetaSection />
         <RelatedTools slugs={tool.related} />
         <CtaBand />
       </main>

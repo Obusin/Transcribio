@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    // Pricing is off while the app is free for testing. Temporary, not permanent,
+    // so search engines don't treat the page as gone for good.
+    return [{ source: "/pricing", destination: "/#free", permanent: false }];
+  },
   async headers() {
     return [
       {

@@ -6,7 +6,7 @@ import {
   CtaBand,
   FaqJsonLd,
   FaqSection,
-  PricingSection,
+  FreeBetaSection,
   RelatedTools,
   TrustRow,
 } from "@/components/marketing/sections";
@@ -138,7 +138,7 @@ export default async function UseCasePage({ params }: PageProps<"/use-cases/[slu
         </Container>
 
         <FaqSection faqs={uc.faqs} n="04" />
-        <PricingSection n="05" />
+        <FreeBetaSection n="05" />
         <RelatedTools slugs={uc.relatedTools} heading="Tools for this work" />
 
         {siblings.length > 0 && (
