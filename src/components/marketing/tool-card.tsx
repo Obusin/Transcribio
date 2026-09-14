@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { ACCOUNTS_ENABLED } from "@/lib/deployment";
 import { classifyLink, platformMessage } from "@/lib/link-import";
 import { setPendingFile, setPendingLink } from "@/lib/marketing/handoff";
 
@@ -143,8 +144,9 @@ export function ToolCard({
       </button>
 
       <p className="mt-3 text-center text-xs leading-relaxed text-muted">
-        Runs on your device. Nothing is uploaded. If you are not signed in yet you will be asked to first, and
-        you will need to pick the file again after.
+        Runs on your device. Nothing is uploaded.
+        {ACCOUNTS_ENABLED &&
+          " If you are not signed in yet you will be asked to first, and you will need to pick the file again after."}
       </p>
     </div>
   );
