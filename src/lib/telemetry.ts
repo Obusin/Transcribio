@@ -25,6 +25,9 @@ export type EventName =
   | "ai_reviewer_used"
   | "exported"
   | "link_imported"
+  | "transcript_rated"
+  | "model_loaded"
+  | "model_load_failed"
   | "feedback";
 
 export interface EventProps {
@@ -47,6 +50,12 @@ export interface EventProps {
   source?: string;
   /** Error class, truncated — never transcript content. */
   error?: string;
+  /** Comma-separated mistake kinds from the rating card (fixed ids, never free text). */
+  errors?: string;
+  /** Whether the user also shared this transcript. */
+  shared?: boolean;
+  /** Seconds to download/load the model. */
+  loadSeconds?: number;
   /** Free-text feedback, only ever from the feedback form the user typed into. */
   message?: string;
   rating?: number;

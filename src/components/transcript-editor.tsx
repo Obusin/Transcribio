@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { RatingCard } from "@/components/rating-card";
 import { ReviewerPanel } from "@/components/reviewer-panel";
 import { getModel } from "@/lib/engine/models";
 import { ACCOUNTS_ENABLED } from "@/lib/deployment";
@@ -369,6 +370,12 @@ export function TranscriptEditor({
                 </button>
               ))}
             </div>
+            {view === "transcript" && (
+              <p className="mt-1.5 text-xs text-muted">
+                Spotted a mistake? <strong className="font-medium text-ink">Click any line to fix it</strong> — your
+                changes save automatically and the original is kept.
+              </p>
+            )}
             {view === "reviewer" && (
               <>
                 <p className="mt-1.5 text-xs text-muted">PDF and Word export the reviewer while this view is open.</p>
@@ -448,7 +455,8 @@ export function TranscriptEditor({
                     else edits[s.id] = text;
                     if (JSON.stringify(edits) !== JSON.stringify(record.edits)) void save({ ...record, edits });
                   }}
-                  className="rounded px-1 text-[15px] leading-relaxed outline-none focus:bg-surface focus:ring-1 focus:ring-line"
+                  title="Click to fix this line"
+                  className="cursor-text rounded px-1 text-[15px] leading-relaxed outline-none transition-colors hover:bg-surface hover:ring-1 hover:ring-line focus:bg-surface focus:ring-1 focus:ring-accent"
                 >
                   {s.text}
                 </div>
@@ -459,6 +467,8 @@ export function TranscriptEditor({
         </div>
 
         <aside className="space-y-5 text-sm lg:sticky lg:top-4 lg:self-start">
+          {/* Keyed by transcript so switching recordings starts a fresh rating. */}
+          <RatingCard key={record.id} record={record} />
           {view === "transcript" && (
             <>
               <input

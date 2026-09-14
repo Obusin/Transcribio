@@ -384,7 +384,7 @@ export const USE_CASES: UseCase[] = [
     faqs: [
       {
         q: "Could you be compelled to hand over my interviews?",
-        a: "We never receive them, so there is nothing to hand over. The file is read by your browser from your disk and the transcript stays in that browser unless you explicitly save it to your account.",
+        a: "We never receive the recording, so there is nothing to hand over. The file is read by your browser from your disk and the transcript stays in that browser — the only way we ever see a transcript is if you tick \"share this transcript\" on it, and that never includes the audio.",
       },
       {
         q: "Does it work for group discussions?",

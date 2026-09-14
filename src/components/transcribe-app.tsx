@@ -266,14 +266,38 @@ export function TranscribeApp({ userId }: { userId: string | null }) {
     try {
       void requestPersistentStorage();
       setPhase({ name: "loading", file, loaded: 0, total: 0 });
-      await eng.loadModel(
+      // Tracked separately: someone giving up on the first ~1 GB download otherwise
+      // looks identical to a crash in the pilot data.
+      const loadStarted = Date.now();
+      try {
+        await eng.loadModel(
+          modelId,
+          (e) => {
+            if (e.stage === "loading-model") setPhase({ name: "loading", file, loaded: e.loadedBytes, total: e.totalBytes });
+          },
+          undefined,
+          profile,
+        );
+      } catch (err) {
+        if (!(err instanceof TranscriptionCancelled)) {
+          track("model_load_failed", {
+            modelId,
+            profile,
+            webgpu: caps?.webgpu,
+            deviceTier: rec?.tier,
+            loadSeconds: (Date.now() - loadStarted) / 1000,
+            error: (err instanceof Error ? err.message : String(err)).slice(0, 200),
+          });
+        }
+        throw err;
+      }
+      track("model_loaded", {
         modelId,
-        (e) => {
-          if (e.stage === "loading-model") setPhase({ name: "loading", file, loaded: e.loadedBytes, total: e.totalBytes });
-        },
-        undefined,
         profile,
-      );
+        webgpu: caps?.webgpu,
+        deviceTier: rec?.tier,
+        loadSeconds: (Date.now() - loadStarted) / 1000,
+      });
       setCacheKey((k) => k + 1);
       const duration = info?.durationSeconds ?? continueFrom?.raw.durationSeconds ?? 0;
       setPhase({
@@ -648,6 +672,35 @@ function clearActiveJob() {
   }
 }
 const LIVE_LINES = 40;
+/** Recordings longer than this get a heads-up on browsers that tend to kill heavy tabs. */
+const LONG_RECORDING_SECONDS = 30 * 60;
+
+/**
+ * Phones and Safari kill memory-heavy tabs sooner than Chrome and Edge on a
+ * laptop — the first pilot crash was Safari, 21 minutes into an 85-minute file.
+ * Progress is saved as it goes, but steering long recordings elsewhere saves the
+ * tester's time and keeps the data about accuracy rather than crashes.
+ */
+function riskyBrowser(): "phone" | "safari" | null {
+  if (typeof navigator === "undefined") return null;
+  const ua = navigator.userAgent;
+  if (/iPhone|iPad|Android|Mobile/i.test(ua)) return "phone";
+  if (/Safari/.test(ua) && !/Chrome|Chromium|CriOS|Edg|OPR|Firefox/.test(ua)) return "safari";
+  return null;
+}
+
+function LongRecordingTip() {
+  const kind = riskyBrowser();
+  if (!kind) return null;
+  return (
+    <p className="mt-4 rounded-xl bg-warn-soft p-3 text-sm text-warn">
+      This is a long recording, and {kind === "phone" ? "phones" : "Safari"} can close heavy tabs partway through. It
+      works best in <strong>Chrome or Edge on a laptop or desktop</strong>. If it does stop, what was done so far is
+      saved and you can continue from your history.
+    </p>
+  );
+}
+
 /** How often a running transcription saves its progress. */
 const CHECKPOINT_MS = 30_000;
 
@@ -753,6 +806,7 @@ function SetupCard(props: {
         </div>
       </dl>
       {props.probeError && <p className="mt-4 rounded-xl bg-warn-soft p-3 text-sm text-warn">{props.probeError}</p>}
+      {info && info.durationSeconds > LONG_RECORDING_SECONDS && <LongRecordingTip />}
 
       <fieldset className="mt-6">
         <legend className="mb-2 text-sm text-muted">Language</legend>

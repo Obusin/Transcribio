@@ -27,12 +27,15 @@ const EVENTS = new Set([
   "ai_reviewer_used",
   "exported",
   "link_imported",
+  "transcript_rated",
+  "model_loaded",
+  "model_load_failed",
   "feedback",
 ]);
 
-const NUMBERS = new Set(["durationSeconds", "realtimeFactor", "rating", "processedSeconds", "minutesRunning"]);
-const STRINGS = new Set(["deviceTier", "profile", "modelId", "language", "format", "error", "pilot", "source"]);
-const BOOLS = new Set(["webgpu"]);
+const NUMBERS = new Set(["durationSeconds", "realtimeFactor", "rating", "processedSeconds", "minutesRunning", "loadSeconds"]);
+const STRINGS = new Set(["deviceTier", "profile", "modelId", "language", "format", "error", "pilot", "source", "errors"]);
+const BOOLS = new Set(["webgpu", "shared"]);
 
 /** Only known keys survive, and only at a sane size. */
 function cleanProps(raw: unknown): Record<string, unknown> {

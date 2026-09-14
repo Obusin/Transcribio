@@ -41,6 +41,11 @@ export type ToolPage = {
   related: string[];
 };
 
+const SHARING_FAQ: Faq = {
+  q: "Do you ever see my transcripts?",
+  a: "Only if you choose to. After a transcription you can rate how accurate it was, and there is a separate, unticked box to share that transcript's text and your corrections to help us improve it. Leave it unticked and the transcript never leaves your browser. The audio and the file name are never sent either way.",
+};
+
 const SHARED_FAQS: Faq[] = [
   {
     q: "Is it really free?",
@@ -51,6 +56,10 @@ const SHARED_FAQS: Faq[] = [
     a: "Nowhere. The recording is read by your browser and processed on your device. It is never uploaded, so there is no copy of it on our servers to leak, subpoena or delete.",
   },
   {
+    q: "Do you ever see my transcripts?",
+    a: SHARING_FAQ.a,
+  },
+  {
     q: "What can I export?",
     a: "PDF, Word (.docx), plain text, and SRT or VTT subtitles. The Word export opens in Google Docs too.",
   },
@@ -59,6 +68,8 @@ const SHARED_FAQS: Faq[] = [
     a: "A recent desktop browser. It starts in Light mode, which uses only part of your computer and downloads a speech model once (roughly 0.6–1.1 GB depending on your computer, cached after that). You can raise it to Balanced or Maximum for more speed — and even Maximum leaves headroom for everything else you're running.",
   },
 ];
+
+
 
 const TAGLISH_FAQ: Faq = {
   q: "Does it handle Taglish?",

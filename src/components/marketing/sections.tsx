@@ -234,7 +234,9 @@ export function FreeBetaSection({ n = "04" }: { n?: string }) {
             ))}
           </ul>
           <p className="mt-7 text-xs leading-relaxed text-inverse-soft">
-            Feedback sends what you type plus basic browser info. Your recordings and transcripts are never sent with it.
+            Feedback sends what you type plus basic browser info. After a transcription you can also rate its
+            accuracy, and optionally share that transcript&apos;s text to help us fix mistakes — only if you tick the
+            box. Recordings are never sent.
           </p>
         </div>
       </div>
