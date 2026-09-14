@@ -20,6 +20,7 @@ export type EventName =
   | "transcribe_finished"
   | "transcribe_failed"
   | "transcribe_cancelled"
+  | "transcribe_crashed"
   | "reviewer_opened"
   | "ai_reviewer_used"
   | "exported"
@@ -34,6 +35,9 @@ export interface EventProps {
   modelId?: string;
   /** Media length in seconds — a number, never the file itself. */
   durationSeconds?: number;
+  /** How far a crashed run had saved, and how long it ran before dying. */
+  processedSeconds?: number;
+  minutesRunning?: number;
   /** Speed: seconds of audio per second of wall clock. */
   realtimeFactor?: number;
   language?: string;

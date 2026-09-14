@@ -14,6 +14,7 @@ import { clock } from "@/lib/transcript/format";
 import { combineTranscripts, describeGap, gapBetween, orderForCombine, suggestTitle } from "@/lib/transcript/combine";
 import { account, persist, syncWithAccount } from "@/lib/transcript/account-sync";
 import { appendContinuation } from "@/lib/transcript/merge";
+import { buildCheckpoint } from "@/lib/transcript/checkpoint";
 import { adoptLegacyHistory, selectAccountCache, transcripts, type StoredTranscript } from "@/lib/transcript/store";
 import { AccountMenu } from "./account-menu";
 import { DeviceStatus, formatMB, useDevice } from "./device-status";
@@ -68,18 +69,28 @@ export function TranscribeApp({ userId }: { userId: string | null }) {
   // If the previous transcription never finished (tab or machine crashed),
   // start this session in Light mode and say why.
   const [crashedWith] = useState(readActiveJob);
+  const [crashInfo] = useState(readActiveJobInfo);
   const [noticeDismissed, setNoticeDismissed] = useState(false);
   const [chosenProfile, setChosenProfile] = useState<ResourceProfile | null>(() =>
     readActiveJob() ? "light" : readStoredProfile(),
   );
   useEffect(() => {
     if (!crashedWith) return;
+    // The only signal a crash leaves is this marker, so this is where the pilot
+    // data learns a run died instead of seeing it simply go quiet.
+    track("transcribe_crashed", {
+      profile: crashInfo?.profile,
+      durationSeconds: crashInfo?.durationSeconds,
+      processedSeconds: crashInfo?.savedSeconds,
+      minutesRunning: crashInfo?.startedAt ? Math.round((Date.now() - crashInfo.startedAt) / 60_000) : undefined,
+    });
     try {
       localStorage.setItem(PROFILE_KEY, "light");
       localStorage.removeItem(ACTIVE_JOB_KEY);
     } catch {
       /* ignore */
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [crashedWith]);
   // Until the user picks one, constrained devices default to Light.
   const profile = chosenProfile ?? defaultProfile(caps);
@@ -198,7 +209,60 @@ export function TranscribeApp({ userId }: { userId: string | null }) {
     const jobLanguage = (continueFrom?.raw.detectedLanguages[0] as LanguageChoice | undefined) ?? language;
     const eng = getEngine();
     setLive([]);
-    markActiveJob(profile);
+
+    // Auto-save. Until now a transcript only reached storage when the run ended,
+    // so a tab crash (Safari killing a tab over memory, say) lost everything.
+    // Every CHECKPOINT_MS the work so far is written as a normal partial
+    // transcript, which the existing Continue flow can resume.
+    const jobId = continueFrom?.id ?? crypto.randomUUID();
+    const jobCreatedAt = new Date().toISOString();
+    const jobDuration = info?.durationSeconds ?? continueFrom?.raw.durationSeconds ?? 0;
+    const engineKind =
+      (caps ? chooseVariant(modelId, caps, profile)?.engine : undefined) ?? (caps?.webgpu ? "browser-webgpu" : "browser-wasm");
+    const done: Segment[] = [];
+    let processedSoFar = startAt;
+    let lastSaveAt = Date.now();
+    let saving = false;
+    let checkpointed = false;
+
+    const checkpoint = async () => {
+      const record = buildCheckpoint({
+        done,
+        processedSeconds: processedSoFar,
+        startAt,
+        jobId,
+        jobCreatedAt,
+        now: new Date().toISOString(),
+        elapsedSeconds: (Date.now() - Date.parse(jobCreatedAt)) / 1000,
+        durationSeconds: jobDuration,
+        modelId,
+        engine: engineKind,
+        language: jobLanguage,
+        file: { name: file.name, size: file.size, hasVideo: info?.hasVideo ?? file.type.startsWith("video/") },
+        continueFrom,
+      });
+      if (!record) return;
+      // Straight to the browser store: a checkpoint is never synced to an account.
+      await transcripts.put(record);
+      checkpointed = true;
+      markActiveJob(profile, {
+        recordId: jobId,
+        savedSeconds: record.raw.partial?.stoppedAtSeconds,
+        durationSeconds: jobDuration,
+      });
+    };
+    const maybeCheckpoint = () => {
+      if (saving || Date.now() - lastSaveAt < CHECKPOINT_MS) return;
+      saving = true;
+      lastSaveAt = Date.now();
+      checkpoint()
+        .catch(() => {})
+        .finally(() => {
+          saving = false;
+        });
+    };
+
+    markActiveJob(profile, { durationSeconds: jobDuration, recordId: undefined, savedSeconds: undefined, startedAt: Date.now() });
     try {
       void requestPersistentStorage();
       setPhase({ name: "loading", file, loaded: 0, total: 0 });
@@ -226,8 +290,15 @@ export function TranscribeApp({ userId }: { userId: string | null }) {
 
       const onProgress = (e: Parameters<Parameters<typeof eng.transcribe>[2]>[0]) => {
         // The preview only shows the tail; don't grow state for multi-hour files.
-        if (e.stage === "segment") setLive((l) => [...l.slice(-(LIVE_LINES - 1)), e.segment]);
-        else if (e.stage === "transcribing")
+        if (e.stage === "segment") {
+          done.push(e.segment);
+          setLive((l) => [...l.slice(-(LIVE_LINES - 1)), e.segment]);
+          maybeCheckpoint();
+        } else if (e.stage === "transcribing") {
+          processedSoFar = e.processedSeconds;
+          maybeCheckpoint();
+        }
+        if (e.stage === "transcribing")
           setPhase((p) =>
             p.name === "transcribing"
               ? { ...p, processed: e.processedSeconds, duration: e.durationSeconds || p.duration, rtf: e.realtimeFactor, message: null }
@@ -248,12 +319,13 @@ export function TranscribeApp({ userId }: { userId: string | null }) {
       const record: StoredTranscript = continueFrom
         ? { ...continueFrom, raw: appendContinuation(continueFrom.raw, transcript), updatedAt: now }
         : {
-            id: crypto.randomUUID(),
+            // Same id as the checkpoints, so the finished transcript replaces them.
+            id: jobId,
             title: file.name.replace(/\.[^.]+$/, ""),
             fileName: file.name,
             fileSize: file.size,
             hasVideo: info?.hasVideo ?? file.type.startsWith("video/"),
-            createdAt: now,
+            createdAt: jobCreatedAt,
             updatedAt: now,
             raw: transcript,
             edits: {},
@@ -273,6 +345,11 @@ export function TranscribeApp({ userId }: { userId: string | null }) {
     } catch (err) {
       if (err instanceof TranscriptionCancelled) {
         track("transcribe_cancelled", { profile, modelId, deviceTier: rec?.tier });
+        // "Discard" means discard: drop the checkpoint, or put a continuation back as it was.
+        if (checkpointed) {
+          await (continueFrom ? transcripts.put(continueFrom) : transcripts.delete(jobId)).catch(() => {});
+          void refreshHistory();
+        }
         // Discarding a continuation leaves the transcript as it was.
         setPhase(continueFrom ? { name: "editor", record: continueFrom, file } : { name: "setup", file, info, probeError: null });
         return;
@@ -285,7 +362,14 @@ export function TranscribeApp({ userId }: { userId: string | null }) {
         webgpu: caps?.webgpu,
         deviceTier: rec?.tier,
       });
-      setPhase({ name: "error", message: friendlyError(err), file });
+      if (checkpointed) void refreshHistory();
+      setPhase({
+        name: "error",
+        message: checkpointed
+          ? `${friendlyError(err)} What was transcribed before it stopped is saved in your history — open it and choose Continue.`
+          : friendlyError(err),
+        file,
+      });
       // A GPU reset can leave the worker unusable; start clean next time.
       void eng.dispose();
     } finally {
@@ -323,6 +407,9 @@ export function TranscribeApp({ userId }: { userId: string | null }) {
             <div className="mb-4 flex items-start justify-between gap-4 rounded-2xl bg-warn-soft p-4 text-sm text-warn">
               <p>
                 Your last transcription stopped before it finished — your computer may have run low on memory.
+                {crashInfo?.savedSeconds
+                  ? ` The first ${clock(crashInfo.savedSeconds)} was saved: open it below and choose Continue to pick up where it stopped.`
+                  : ""}{" "}
                 We&apos;ve switched to <strong>Light</strong> performance, which uses a smaller model and gives your
                 graphics card rest breaks.
               </p>
@@ -517,18 +604,37 @@ function useHydrated() {
   );
 }
 
-function readActiveJob(): ResourceProfile | null {
+interface ActiveJob {
+  profile: ResourceProfile;
+  startedAt: number;
+  durationSeconds?: number;
+  /** Last checkpoint: how far the saved partial transcript reaches, and where it's stored. */
+  savedSeconds?: number;
+  recordId?: string;
+}
+
+function readActiveJobInfo(): ActiveJob | null {
   try {
     const v = typeof window !== "undefined" ? localStorage.getItem(ACTIVE_JOB_KEY) : null;
-    return v ? ((JSON.parse(v).profile as ResourceProfile) ?? "balanced") : null;
+    if (!v) return null;
+    const job = JSON.parse(v) as Partial<ActiveJob>;
+    return { ...job, profile: job.profile ?? "balanced", startedAt: job.startedAt ?? 0 };
   } catch {
     return null;
   }
 }
 
-function markActiveJob(profile: ResourceProfile) {
+function readActiveJob(): ResourceProfile | null {
+  return readActiveJobInfo()?.profile ?? null;
+}
+
+function markActiveJob(profile: ResourceProfile, extra: Partial<ActiveJob> = {}) {
   try {
-    localStorage.setItem(ACTIVE_JOB_KEY, JSON.stringify({ profile, startedAt: Date.now() }));
+    const prev = readActiveJobInfo();
+    localStorage.setItem(
+      ACTIVE_JOB_KEY,
+      JSON.stringify({ ...(prev ?? {}), profile, startedAt: prev?.startedAt ?? Date.now(), ...extra }),
+    );
   } catch {
     /* ignore */
   }
@@ -542,6 +648,8 @@ function clearActiveJob() {
   }
 }
 const LIVE_LINES = 40;
+/** How often a running transcription saves its progress. */
+const CHECKPOINT_MS = 30_000;
 
 function readStoredProfile(): ResourceProfile | null {
   try {

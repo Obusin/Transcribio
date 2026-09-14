@@ -22,6 +22,7 @@ const EVENTS = new Set([
   "transcribe_finished",
   "transcribe_failed",
   "transcribe_cancelled",
+  "transcribe_crashed",
   "reviewer_opened",
   "ai_reviewer_used",
   "exported",
@@ -29,7 +30,7 @@ const EVENTS = new Set([
   "feedback",
 ]);
 
-const NUMBERS = new Set(["durationSeconds", "realtimeFactor", "rating"]);
+const NUMBERS = new Set(["durationSeconds", "realtimeFactor", "rating", "processedSeconds", "minutesRunning"]);
 const STRINGS = new Set(["deviceTier", "profile", "modelId", "language", "format", "error", "pilot", "source"]);
 const BOOLS = new Set(["webgpu"]);
 
