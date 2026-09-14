@@ -63,7 +63,7 @@ const SHARED_FAQS: Faq[] = [
   },
   {
     q: "What do I need to run it?",
-    a: "A recent desktop browser. It starts in Light mode, which uses only part of your computer and downloads a smaller speech model once (about 0.6 GB, cached after that). You can raise it to Balanced or Maximum for more speed — and even Maximum leaves headroom for everything else you're running.",
+    a: "A recent desktop browser. It starts in Light mode, which uses only part of your computer and downloads a speech model once (roughly 0.6–1.1 GB depending on your computer, cached after that). You can raise it to Balanced or Maximum for more speed — and even Maximum leaves headroom for everything else you're running.",
   },
 ];
 
