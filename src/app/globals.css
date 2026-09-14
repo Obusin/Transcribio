@@ -21,7 +21,7 @@
   --warn-soft: #fdf3e1;
   --danger: #b42318;
 
-  /* Marketing vocabulary — fixed in both schemes; these are deliberate surfaces. */
+  /* Marketing vocabulary. */
   --panel-alt: #f2f5fb;
   --ink-2: #3a4661;
   --label: #5472a0;
@@ -42,25 +42,14 @@
   --shadow-lg: 0 20px 52px #0e1c3821;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0c1830;
-    --surface: #111f3a;
-    --ink: #f0f4ff;
-    --muted: #9aabc9;
-    --line: #b4c8eb29;
-    --accent: #6d97f2;
-    --accent-ink: #0a142b;
-    --accent-soft: #17294a;
-    --warn: #f0b457;
-    --warn-soft: #2e2415;
-    --danger: #f47066;
-
-    --panel-alt: #16264423;
-    --ink-2: #c6d3ea;
-    --label: #7e9cd0;
-    --line-strong: #b4c8eb3d;
-  }
+/*
+ * Light only, like obustudio.com. There used to be a dark palette here that
+ * followed the visitor's system setting, which turned the whole site navy for
+ * anyone in dark mode. `color-scheme: light` also keeps form controls and
+ * scrollbars light when the OS is dark.
+ */
+:root {
+  color-scheme: light;
 }
 
 @theme inline {
