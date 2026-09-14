@@ -248,7 +248,7 @@ export const USE_CASES: UseCase[] = [
       },
       {
         q: "Will it work on a school laptop?",
-        a: "Probably, but the model needs memory. There is a Light resource profile for smaller machines, and the first run downloads about 1.6 GB which is then cached. Older or low-RAM laptops will be slow rather than broken.",
+        a: "Probably. It starts in Light mode, which is gentle on the machine and downloads a smaller model once (about 0.6 GB, then cached). Older or low-RAM laptops will be slow rather than broken.",
       },
       {
         q: "Does the Reviewer write my notes for me?",

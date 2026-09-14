@@ -16,7 +16,7 @@ import { DecodeInterruptedError, decodeToPcm16k, UnsupportedCodecError } from ".
 import { TARGET_RATE } from "../../audio/resample";
 import { collapseRepeats, isLikelyHallucination } from "../../transcript/cleanup";
 import { getModel, type ModelVariant } from "../models";
-import { restMs } from "../resources";
+import { adaptiveDuty, restMs } from "../resources";
 import type { LanguageChoice, ProgressEvent, Segment, Transcript } from "../types";
 import type { WorkerRequest, WorkerResponse } from "./protocol";
 
@@ -38,8 +38,11 @@ let cancelled = false;
 let keepPartial = false;
 let paused = false;
 let resumeWaiters: (() => void)[] = [];
-/** Share of wall time the GPU may be busy; the worker rests in between. */
+/** The profile's ceiling on the share of wall time the GPU may be busy. */
 let gpuDuty = 1;
+/** Work per second of audio for recent chunks, so the rest can grow when the machine struggles. */
+let paces: number[] = [];
+const MAX_PACES = 30;
 let wakeRest: (() => void) | null = null;
 let runtimeInitialized = false;
 
@@ -61,6 +64,7 @@ scope.onmessage = async (e: MessageEvent<WorkerRequest>) => {
         keepPartial = false;
         paused = false;
         gpuDuty = msg.gpuDuty;
+        paces = []; // each job learns this machine's pace afresh
         const transcript = await transcribe(msg);
         if (transcript) post({ type: "result", transcript });
         else post({ type: "cancelled" });
@@ -103,13 +107,22 @@ async function waitIfPaused() {
 
 /**
  * Run a unit of GPU work, then rest in proportion to how long it took, so the
- * GPU is busy at most `gpuDuty` of the time. Rests end early on cancel or when
- * the user changes the performance level.
+ * GPU is busy at most the profile's share of the time — less if the machine is
+ * falling behind its own earlier pace (see adaptiveDuty). Rests end early on
+ * cancel or when the user changes the performance level.
+ *
+ * `audioSeconds` is how much audio the work covered; very short chunks are too
+ * noisy to judge pace from, so they don't count.
  */
-async function throttled<T>(work: () => Promise<T>): Promise<T> {
+async function throttled<T>(work: () => Promise<T>, audioSeconds = 0): Promise<T> {
   const t0 = performance.now();
   const result = await work();
-  const ms = restMs(performance.now() - t0, gpuDuty);
+  const busy = performance.now() - t0;
+  if (audioSeconds >= 3) {
+    paces.push(busy / audioSeconds);
+    if (paces.length > MAX_PACES) paces.shift();
+  }
+  const ms = restMs(busy, adaptiveDuty(gpuDuty, paces));
   if (ms > 0 && !cancelled) {
     await new Promise<void>((resolve) => {
       const timer = setTimeout(done, ms);
@@ -302,14 +315,16 @@ async function transcribe(req: Extract<WorkerRequest, { type: "transcribe" }>): 
   const runChunk = async (chunk: AudioChunk) => {
     const lang = language!;
     detected.add(lang);
-    const out = await throttled(() =>
-      asr!(chunk.audio, {
-        language: lang,
-        task: "transcribe", // never translate
-        return_timestamps: true,
-        // Bounding output length is the cheapest guard against repetition loops.
-        max_new_tokens: Math.min(440, Math.ceil((chunk.end - chunk.start) * 9) + 24),
-      } as Record<string, unknown>),
+    const out = await throttled(
+      () =>
+        asr!(chunk.audio, {
+          language: lang,
+          task: "transcribe", // never translate
+          return_timestamps: true,
+          // Bounding output length is the cheapest guard against repetition loops.
+          max_new_tokens: Math.min(440, Math.ceil((chunk.end - chunk.start) * 9) + 24),
+        } as Record<string, unknown>),
+      chunk.audio.length / TARGET_RATE,
     );
     const result = Array.isArray(out) ? out[0] : out;
     const pieces = (result.chunks as { text: string; timestamp: [number, number | null] }[] | undefined) ?? [
@@ -338,6 +353,8 @@ async function transcribe(req: Extract<WorkerRequest, { type: "transcribe" }>): 
       if (cancelled) return;
       if (!language) {
         // Accumulate the first ~45 s of speech, vote, then lock the language.
+        // No audio length here: language detection is far quicker per second than
+        // transcription, and mixing the two would make every real chunk look slow.
         const scores = await throttled(() => languageScores(chunk.audio));
         // Music/noise chunks shouldn't get a say in the language vote.
         const w = (chunk.end - chunk.start) * Math.max(chunk.speechRatio, 0.05);

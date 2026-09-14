@@ -57,14 +57,24 @@ is bounded to roughly one chunk (~30 s) regardless of file length.
 Local ASR is heavy, and an unbounded run can take a laptop down. `src/lib/engine/resources.ts`
 bounds each job:
 
-| | Light | Balanced (default) | Maximum |
+| | Light (default for everyone) | Balanced | Maximum |
 |---|---|---|---|
-| GPU duty cycle (worker rests between chunks) | 50% | 75% | 100% |
-| ONNX Runtime WASM threads | 1 on WebGPU; ≤2 on CPU | 1 on WebGPU; ≤4 on CPU | 1 on WebGPU; cores−1 on CPU |
+| GPU duty-cycle ceiling (worker rests between chunks) | 50% | 70% | 85% |
+| ONNX Runtime WASM threads (CPU engine) | 25% of cores | 50% of cores | 75% of cores |
 | Model build | q4f16 (0.56 GB) | fp16/q4 (1.6 GB) | fp16/q4 |
 
+No profile uses the whole machine:
+- **GPU:** every profile's duty is below 1, so the worker always rests between chunks.
+- **CPU:** thread counts are a share of the cores with a reserve always kept free (a quarter of the cores,
+  at least one), capped at 8. On WebGPU the WASM side only runs the VAD, so it's 1 thread regardless.
+- **Adaptive:** the worker times each transcription chunk (ms of work per second of audio). If the recent
+  pace is a sustained 1.5× slower than this run's typical good stretch — heat-throttling, or a heavy app
+  opened — the duty is cut in proportion (floor 30%) and restored when the pace recovers. Language-detection
+  chunks are excluded because they're far cheaper per second. `adaptiveDuty` in resources.ts.
+
 Also:
-- Constrained devices (no WebGPU, ≤4 GB RAM, small GPU buffers, Intel integrated graphics) default to Light and the compact build.
+- Everyone starts on Light (changed 2026-09-14). A user's own choice is remembered.
+- Constrained devices (no WebGPU, ≤4 GB RAM, small GPU buffers, Intel integrated graphics) get the compact build on any profile.
 - The worker is terminated 60 s after a job ends. That's the only way to return ONNX Runtime's WASM heap.
 - If a job never finished (tab or machine crashed), the next visit switches to Light and says why.
 - The level can be changed mid-job.

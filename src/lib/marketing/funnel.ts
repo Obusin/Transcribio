@@ -63,7 +63,7 @@ const SHARED_FAQS: Faq[] = [
   },
   {
     q: "What do I need to run it?",
-    a: "A recent desktop browser and a machine with enough memory. The speech model downloads once (about 1.6 GB) and is cached after that, so the first run is the slow one. There is a Light profile for smaller machines.",
+    a: "A recent desktop browser. It starts in Light mode, which uses only part of your computer and downloads a smaller speech model once (about 0.6 GB, cached after that). You can raise it to Balanced or Maximum for more speed — and even Maximum leaves headroom for everything else you're running.",
   },
 ];
 
@@ -97,7 +97,7 @@ export const TOOLS: ToolPage[] = [
       TAGLISH_FAQ,
       {
         q: "Is there a file size limit?",
-        a: "No server limit, because nothing is uploaded. Very long files are read in chunks rather than loaded whole, so length is limited by your computer's memory rather than by us. Pick the Light resource profile on a smaller machine.",
+        a: "No server limit, because nothing is uploaded. Very long files are read in chunks rather than loaded whole, so length is limited by your computer's memory rather than by us. Long recordings are saved as they go, so if something interrupts a run you can continue from where it stopped.",
       },
       ...SHARED_FAQS,
     ],
