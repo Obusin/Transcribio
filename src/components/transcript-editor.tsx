@@ -43,6 +43,18 @@ export function TranscriptEditor({
   const [ai, setAi] = useState<{ id: string; doc: ReviewerDoc } | null>(null);
   const [aiState, setAiState] = useState<"idle" | "confirm" | "working">("idle");
   const [aiError, setAiError] = useState<string | null>(null);
+  // Hidden unless the server has a key, so testers never see a button that can only fail.
+  const [aiEnabled, setAiEnabled] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/reviewer")
+      .then((r) => (r.ok ? r.json() : { enabled: false }))
+      .then((d: { enabled?: boolean }) => alive && setAiEnabled(Boolean(d.enabled)))
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
   const [active, setActive] = useState<number | null>(null);
   const [editing, setEditing] = useState<number | null>(null);
   const media = useRef<HTMLVideoElement & HTMLAudioElement>(null);
@@ -360,6 +372,7 @@ export function TranscriptEditor({
             {view === "reviewer" && (
               <>
                 <p className="mt-1.5 text-xs text-muted">PDF and Word export the reviewer while this view is open.</p>
+                {aiEnabled && (
                 <AiReviewerControl
                   state={aiState}
                   active={aiDoc !== null}
@@ -372,6 +385,7 @@ export function TranscriptEditor({
                     setAiError(null);
                   }}
                 />
+                )}
               </>
             )}
           </div>

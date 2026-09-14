@@ -104,6 +104,9 @@ function overBudget(req: Request): boolean {
   return hit.count > PER_IP_PER_HOUR;
 }
 
+/** GET → whether this deployment offers the AI reviewer, so the UI can hide it when it doesn't. */
+export const GET = handler(async () => json({ enabled: openRouterConfigured() }), { auth: false });
+
 export const POST = handler(
   async (req) => {
   if (!openRouterConfigured()) return fail("AI reviewer is not configured on this server.", 503);
