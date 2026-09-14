@@ -23,6 +23,7 @@ export type EventName =
   | "reviewer_opened"
   | "ai_reviewer_used"
   | "exported"
+  | "link_imported"
   | "feedback";
 
 export interface EventProps {
@@ -38,6 +39,8 @@ export interface EventProps {
   language?: string;
   /** Export format chosen (pdf/docx/txt/srt/vtt). */
   format?: string;
+  /** How a link import went: direct / relay / failed / platform-refused. Never the URL itself. */
+  source?: string;
   /** Error class, truncated — never transcript content. */
   error?: string;
   /** Free-text feedback, only ever from the feedback form the user typed into. */

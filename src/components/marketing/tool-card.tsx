@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { setPendingFile } from "@/lib/marketing/handoff";
+import { classifyLink, platformMessage } from "@/lib/link-import";
+import { setPendingFile, setPendingLink } from "@/lib/marketing/handoff";
 
 /**
  * The tool card that sits above the fold on every funnel page.
@@ -27,6 +28,18 @@ export function ToolCard({
   const [over, setOver] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [going, setGoing] = useState(false);
+  const [link, setLink] = useState("");
+  const [linkError, setLinkError] = useState<string | null>(null);
+
+  const goWithLink = () => {
+    const plan = classifyLink(link);
+    if (plan.kind === "invalid") return setLinkError(plan.reason);
+    // Refuse platform pages here, before the visitor is sent anywhere.
+    if (plan.kind === "platform") return setLinkError(platformMessage(plan.platform));
+    setPendingLink(link.trim());
+    setGoing(true);
+    router.push("/transcribe");
+  };
 
   const go = (f: File | null) => {
     if (f) setPendingFile(f);
@@ -85,6 +98,34 @@ export function ToolCard({
           }}
         />
       </div>
+
+      <form
+        className="mt-3 flex gap-2"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (link.trim()) goWithLink();
+        }}
+      >
+        <input
+          type="url"
+          inputMode="url"
+          value={link}
+          onChange={(e) => {
+            setLink(e.target.value);
+            setLinkError(null);
+          }}
+          placeholder="…or paste a Drive, Dropbox or file link"
+          className="h-10 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-4 text-[13px] outline-none focus:border-ink"
+        />
+        <button
+          type="submit"
+          disabled={!link.trim() || going}
+          className="h-10 shrink-0 rounded-full border border-line-strong bg-surface px-4 text-[13px] font-bold tracking-[-0.02em] text-ink transition hover:border-ink disabled:opacity-40"
+        >
+          Import
+        </button>
+      </form>
+      {linkError && <p className="mt-2 text-xs leading-relaxed text-danger">{linkError}</p>}
 
       {file && (
         <p className="mt-3 truncate text-xs text-muted" title={file.name}>

@@ -8,7 +8,7 @@ import { requestPersistentStorage } from "@/lib/engine/model-cache";
 import { chooseVariant, defaultProfile, PROFILES, type ResourceProfile } from "@/lib/engine/resources";
 import { localDeviceId } from "@/lib/deployment";
 import { track } from "@/lib/telemetry";
-import { takePendingFile } from "@/lib/marketing/handoff";
+import { clearPendingLink, peekPendingLink, takePendingFile } from "@/lib/marketing/handoff";
 import { TranscriptionCancelled, type LanguageChoice, type Segment } from "@/lib/engine/types";
 import { clock } from "@/lib/transcript/format";
 import { combineTranscripts, describeGap, gapBetween, orderForCombine, suggestTitle } from "@/lib/transcript/combine";
@@ -17,6 +17,7 @@ import { appendContinuation } from "@/lib/transcript/merge";
 import { adoptLegacyHistory, selectAccountCache, transcripts, type StoredTranscript } from "@/lib/transcript/store";
 import { AccountMenu } from "./account-menu";
 import { DeviceStatus, formatMB, useDevice } from "./device-status";
+import { LinkImportBox } from "./link-import-box";
 import { TranscriptEditor } from "./transcript-editor";
 
 type Phase =
@@ -53,6 +54,12 @@ const LANGUAGES: { value: LanguageChoice; label: string; hint: string }[] = [
 export function TranscribeApp({ userId }: { userId: string | null }) {
   const { caps, rec } = useDevice();
   const [phase, setPhase] = useState<Phase>({ name: "home" });
+  // A link pasted on a landing page. Peeked in the initializer and cleared in an
+  // effect, so StrictMode's double initializer call can't drop it.
+  const [handedLink] = useState(peekPendingLink);
+  useEffect(() => {
+    if (handedLink) clearPendingLink();
+  }, [handedLink]);
   const [language, setLanguage] = useState<LanguageChoice>("auto");
   const [live, setLive] = useState<Segment[]>([]);
   const [history, setHistory] = useState<StoredTranscript[]>([]);
@@ -333,6 +340,7 @@ export function TranscribeApp({ userId }: { userId: string | null }) {
             </div>
           )}
           <DropZone onFile={chooseFile} disabled={rec?.tier === "unsupported"} />
+          <LinkImportBox onFile={chooseFile} disabled={rec?.tier === "unsupported"} initialUrl={handedLink} />
           <div className="mt-4">
             <DeviceStatus caps={caps} rec={rec} profile={profile} refreshKey={cacheKey} />
           </div>

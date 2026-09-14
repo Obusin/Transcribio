@@ -25,11 +25,12 @@ const EVENTS = new Set([
   "reviewer_opened",
   "ai_reviewer_used",
   "exported",
+  "link_imported",
   "feedback",
 ]);
 
 const NUMBERS = new Set(["durationSeconds", "realtimeFactor", "rating"]);
-const STRINGS = new Set(["deviceTier", "profile", "modelId", "language", "format", "error", "pilot"]);
+const STRINGS = new Set(["deviceTier", "profile", "modelId", "language", "format", "error", "pilot", "source"]);
 const BOOLS = new Set(["webgpu"]);
 
 /** Only known keys survive, and only at a sane size. */

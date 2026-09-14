@@ -21,3 +21,22 @@ export function takePendingFile(): File | null {
   pending = null;
   return f;
 }
+
+let pendingLink: string | null = null;
+
+/** Same hand-off for a pasted link: the app starts the import on arrival. */
+export function setPendingLink(url: string): void {
+  pendingLink = url;
+}
+
+/**
+ * Non-destructive read. React's dev StrictMode runs state initializers twice,
+ * so a read-and-clear would hand the second call null and lose the link.
+ */
+export function peekPendingLink(): string | null {
+  return pendingLink;
+}
+
+export function clearPendingLink(): void {
+  pendingLink = null;
+}
