@@ -1,4 +1,5 @@
-import { get, list, put } from "@vercel/blob";
+import { put } from "@vercel/blob";
+import { loadPilotData } from "@/server/pilot-data";
 import { fail, json, sameOrigin } from "@/server/http";
 
 /**
@@ -34,7 +35,7 @@ const EVENTS = new Set([
 ]);
 
 const NUMBERS = new Set(["durationSeconds", "realtimeFactor", "rating", "processedSeconds", "minutesRunning", "loadSeconds"]);
-const STRINGS = new Set(["deviceTier", "profile", "modelId", "language", "format", "error", "pilot", "source", "errors"]);
+const STRINGS = new Set(["deviceTier", "profile", "modelId", "language", "format", "error", "pilot", "source", "errors", "ref"]);
 const BOOLS = new Set(["webgpu", "shared"]);
 
 /** Only known keys survive, and only at a sane size. */
@@ -52,26 +53,43 @@ function cleanProps(raw: unknown): Record<string, unknown> {
   return out;
 }
 
+const MAX_BATCH = 40;
+
+type RawEvent = { name?: unknown; props?: unknown; at?: unknown };
+
+function cleanEvent(e: RawEvent) {
+  if (typeof e?.name !== "string" || !EVENTS.has(e.name)) return null;
+  const at = typeof e.at === "string" && !Number.isNaN(Date.parse(e.at)) ? new Date(e.at).toISOString() : new Date().toISOString();
+  return { name: e.name, props: cleanProps(e.props), at };
+}
+
+/**
+ * One write per batch, not per event: the free Blob plan allows ~2,000 writes a
+ * month. Accepts a batch ({ device, ua, events: [...] }) or, for older clients
+ * still open in someone's tab, a single event.
+ */
 export async function POST(req: Request) {
   if (!sameOrigin(req)) return fail("This request came from another site and was blocked.", 403);
   if (!process.env.BLOB_READ_WRITE_TOKEN) return json({ ok: true, stored: false });
 
   const body = (await req.json().catch(() => null)) as
-    | { name?: unknown; props?: unknown; device?: unknown; at?: unknown; ua?: unknown }
+    | { name?: unknown; props?: unknown; at?: unknown; events?: unknown; device?: unknown; ua?: unknown }
     | null;
-  if (!body || typeof body.name !== "string" || !EVENTS.has(body.name)) return fail("Unknown event.", 400);
+  if (!body) return fail("Expected JSON.", 400);
 
-  const event = {
-    name: body.name,
-    props: cleanProps(body.props),
+  const raw: RawEvent[] = Array.isArray(body.events) ? (body.events as RawEvent[]).slice(0, MAX_BATCH) : [body];
+  const events = raw.map(cleanEvent).filter((e) => e !== null);
+  if (!events.length) return fail("Unknown event.", 400);
+
+  const batch = {
     device: typeof body.device === "string" ? body.device.slice(0, 64) : "unknown",
-    ua: typeof body.ua === "string" ? body.ua.slice(0, 200) : "",
+    ua: typeof body.ua === "string" ? body.ua.slice(0, 200) : (req.headers.get("user-agent") ?? "").slice(0, 200),
     at: new Date().toISOString(),
+    events,
   };
 
-  const day = event.at.slice(0, 10);
   try {
-    await put(`events/${day}/${Date.now()}-${crypto.randomUUID().slice(0, 8)}.json`, JSON.stringify(event), {
+    await put(`events/${batch.at.slice(0, 10)}/${Date.now()}-${crypto.randomUUID().slice(0, 8)}.json`, JSON.stringify(batch), {
       // The store is private: tester data must never sit at a guessable public URL.
       access: "private",
       contentType: "application/json",
@@ -82,30 +100,14 @@ export async function POST(req: Request) {
     console.error("telemetry write failed", err);
     return json({ ok: true, stored: false });
   }
-  return json({ ok: true, stored: true });
+  return json({ ok: true, stored: true, count: events.length });
 }
 
-/** GET ?token=ADMIN_TOKEN[&day=YYYY-MM-DD] → the raw events, newest first. */
+/** GET ?token=ADMIN_TOKEN → the raw events, newest first (same cached loader as /admin). */
 export async function GET(req: Request) {
   const admin = process.env.ADMIN_TOKEN;
   const url = new URL(req.url);
   if (!admin || url.searchParams.get("token") !== admin) return fail("Not found.", 404);
-  if (!process.env.BLOB_READ_WRITE_TOKEN) return json({ events: [], note: "No blob store configured." });
-
-  const day = url.searchParams.get("day");
-  const { blobs } = await list({ prefix: day ? `events/${day}/` : "events/", limit: 1000 });
-  const newest = blobs.sort((a, b) => (a.pathname < b.pathname ? 1 : -1)).slice(0, 500);
-
-  const events = await Promise.all(
-    newest.map(async (b) => {
-      try {
-        // Private blobs aren't readable by URL; read them through the SDK with the store token.
-        const found = await get(b.pathname, { access: "private", useCache: false });
-        return found ? await new Response(found.stream).json() : null;
-      } catch {
-        return null;
-      }
-    }),
-  );
-  return json({ count: events.length, events: events.filter(Boolean) });
+  const data = await loadPilotData({ refresh: url.searchParams.has("refresh") });
+  return json({ count: data.events.length, writesThisMonth: data.writesThisMonth, events: data.events.slice(0, 1000) });
 }

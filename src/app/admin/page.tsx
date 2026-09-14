@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ERROR_KINDS, type Contribution } from "@/lib/contribution";
-import { browserLabel, readJsonBlobs } from "@/server/pilot-data";
+import { ERROR_KINDS } from "@/lib/contribution";
+import { browserLabel, loadPilotData, type PilotEvent } from "@/server/pilot-data";
 
 /**
  * Private pilot dashboard: /admin?token=ADMIN_TOKEN
@@ -14,15 +14,7 @@ import { browserLabel, readJsonBlobs } from "@/server/pilot-data";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Pilot data", robots: { index: false, follow: false } };
 
-interface Event {
-  name: string;
-  props: Record<string, unknown>;
-  device: string;
-  ua?: string;
-  at: string;
-}
-
-type Shared = Contribution & { at: string; device: string; pilot?: string; ua?: string };
+type Event = PilotEvent;
 
 const ERROR_LABEL = Object.fromEntries(ERROR_KINDS.map((k) => [k.id, k.label])) as Record<string, string>;
 
@@ -39,10 +31,9 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
   const token = (await searchParams).token;
   if (!process.env.ADMIN_TOKEN || token !== process.env.ADMIN_TOKEN) notFound();
 
-  const [events, shared] = await Promise.all([
-    readJsonBlobs<Event>("events/", 3000),
-    readJsonBlobs<Shared>("contributions/", 200),
-  ]);
+  const params = await searchParams;
+  const { events, shared, writesThisMonth, loadedAt } = await loadPilotData({ refresh: params.refresh !== undefined });
+  const users = userStats(events);
 
   const count = (name: string) => events.filter((e) => e.name === name).length;
   const devices = new Set(events.map((e) => e.device)).size;
@@ -60,7 +51,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
   const feedback = events.filter((e) => e.name === "feedback" || (e.name === "transcript_rated" && e.props.message));
 
   const stats: [string, string | number, string?][] = [
-    ["Devices", devices],
+    ["Browsers seen", devices],
     ["Opened the app", count("app_opened")],
     ["Model loaded", count("model_loaded"), `${count("model_load_failed")} failed`],
     ["Transcriptions started", started],
@@ -80,7 +71,47 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
         transcripts people chose to share.
       </p>
 
-      <section className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+      <StorageBar writes={writesThisMonth} loadedAt={loadedAt} />
+
+      <section className="mt-8">
+        <h2 className="text-lg font-bold">Users</h2>
+        <p className="mt-1 text-muted">
+          A &ldquo;user&rdquo; is one browser on one device — the same person on two browsers counts twice, and clearing
+          browser data makes them new again. Visitors to the landing pages are in Vercel Analytics, not here.
+        </p>
+        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {(
+            [
+              ["Used the app", users.usedApp, "opened the transcriber"],
+              ["Transcribed something", users.transcribed, `${pct(users.transcribed, users.usedApp)} of app users`],
+              ["Came back", users.returning, "active on 2+ days"],
+              ["Rated or shared", users.engaged, `${pct(users.engaged, users.transcribed)} of those who transcribed`],
+            ] as const
+          ).map(([label, value, sub]) => (
+            <div key={label} className="rounded-2xl border border-line bg-surface p-4">
+              <p className="text-xs text-muted">{label}</p>
+              <p className="mt-1 text-3xl font-extrabold tabular-nums">{value}</p>
+              <p className="text-xs text-muted">{sub}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Table
+        title="Users by day"
+        empty="No activity yet."
+        head={["Day (Manila)", "Active users", "New users", "Transcriptions finished"]}
+        rows={users.days.map((d) => [d.day, String(d.active), String(d.fresh), String(d.finished)])}
+      />
+
+      <Table
+        title="Where app users came from"
+        empty="No sources recorded yet."
+        head={["Source", "Users", "Transcribed"]}
+        rows={users.sources.map((r) => [r.source, String(r.users), String(r.transcribed)])}
+      />
+
+      <section className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         {stats.map(([label, value, sub]) => (
           <div key={label} className="rounded-2xl border border-line bg-surface p-4">
             <p className="text-xs text-muted">{label}</p>
@@ -239,6 +270,98 @@ function Table({ title, empty, head, rows }: { title: string; empty: string; hea
             </tbody>
           </table>
         </div>
+      )}
+    </section>
+  );
+}
+
+function manilaDay(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-CA", { timeZone: "Asia/Manila" });
+}
+
+/** Per-browser usage: who used the app, who got a transcript, who came back, and from where. */
+function userStats(events: Event[]) {
+  const real = events.filter((e) => e.device && e.device !== "unknown" && e.device !== "anon");
+  const devicesWith = (name: string) => new Set(real.filter((e) => e.name === name).map((e) => e.device));
+
+  const usedApp = devicesWith("app_opened");
+  const transcribed = devicesWith("transcribe_finished");
+  const engaged = new Set([...devicesWith("transcript_rated"), ...devicesWith("feedback")]);
+
+  const daysByDevice = new Map<string, Set<string>>();
+  const firstDay = new Map<string, string>();
+  for (const e of real) {
+    const day = manilaDay(e.at);
+    if (!daysByDevice.has(e.device)) daysByDevice.set(e.device, new Set());
+    daysByDevice.get(e.device)!.add(day);
+    const f = firstDay.get(e.device);
+    if (!f || day < f) firstDay.set(e.device, day);
+  }
+  const returning = [...daysByDevice.values()].filter((d) => d.size >= 2).length;
+
+  const dayMap = new Map<string, { active: Set<string>; finished: number }>();
+  for (const e of real) {
+    const day = manilaDay(e.at);
+    if (!dayMap.has(day)) dayMap.set(day, { active: new Set(), finished: 0 });
+    const d = dayMap.get(day)!;
+    d.active.add(e.device);
+    if (e.name === "transcribe_finished") d.finished++;
+  }
+  const days = [...dayMap.entries()]
+    .sort((a, b) => (a[0] < b[0] ? 1 : -1))
+    .slice(0, 30)
+    .map(([day, d]) => ({
+      day,
+      active: d.active.size,
+      fresh: [...firstDay.values()].filter((f) => f === day).length,
+      finished: d.finished,
+    }));
+
+  // First-touch source travels on app_opened; use the earliest one per browser.
+  const sourceOf = new Map<string, string>();
+  for (const e of [...real].reverse()) {
+    if (e.name === "app_opened" && !sourceOf.has(e.device) && e.props.ref) sourceOf.set(e.device, String(e.props.ref));
+  }
+  const bySource = new Map<string, { users: number; transcribed: number }>();
+  for (const device of usedApp) {
+    const src = sourceOf.get(device) ?? "not recorded (before source tracking)";
+    const row = bySource.get(src) ?? { users: 0, transcribed: 0 };
+    row.users++;
+    if (transcribed.has(device)) row.transcribed++;
+    bySource.set(src, row);
+  }
+  const sources = [...bySource.entries()].sort((a, b) => b[1].users - a[1].users).map(([source, r]) => ({ source, ...r }));
+
+  return { usedApp: usedApp.size, transcribed: transcribed.size, returning, engaged: engaged.size, days, sources };
+}
+
+/**
+ * The free Blob plan allows ~2,000 writes a month and locks the store for 30
+ * days past that — at which point feedback and shares stop saving. Shown at the
+ * top so it's noticed well before then.
+ */
+function StorageBar({ writes, loadedAt }: { writes: number; loadedAt: string }) {
+  const LIMIT = 2000;
+  const used = Math.min(1, writes / LIMIT);
+  const tone = used > 0.8 ? "bg-danger" : used > 0.5 ? "bg-warn" : "bg-accent";
+  return (
+    <section className="mt-6 rounded-2xl border border-line bg-surface p-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <p className="font-medium">
+          Free storage writes this month: <span className="tabular-nums">{writes}</span> / {LIMIT}
+        </p>
+        <p className="text-xs text-muted">
+          Updated {when(loadedAt)} · cached 5 min · add <code>&amp;refresh=1</code> to reload now
+        </p>
+      </div>
+      <div className="mt-2 h-2 overflow-hidden rounded-full bg-line">
+        <div className={`h-full ${tone}`} style={{ width: `${Math.max(used * 100, 1)}%` }} />
+      </div>
+      {used > 0.5 && (
+        <p className="mt-2 text-xs text-danger">
+          Past half the free allowance. If this reaches {LIMIT}, Vercel locks Blob storage for 30 days and feedback and
+          shared transcripts stop saving — move pilot data to a database before then.
+        </p>
       )}
     </section>
   );

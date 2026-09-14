@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { FirstTouch } from "@/components/first-touch";
 import { SITE_URL } from "@/lib/marketing/site";
 import "./globals.css";
 
@@ -28,7 +30,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${jakarta.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {/* Visitor counts, referrers and countries — cookieless. Starts once Web Analytics is enabled in Vercel. */}
+        <Analytics />
+        <FirstTouch />
+      </body>
     </html>
   );
 }

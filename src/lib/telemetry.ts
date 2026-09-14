@@ -59,6 +59,8 @@ export interface EventProps {
   /** Free-text feedback, only ever from the feedback form the user typed into. */
   message?: string;
   rating?: number;
+  /** Where this browser first came from (facebook.com, utm_source, direct). */
+  ref?: string;
   /** The code Mark hands a pilot user, so he can tell cohorts apart. */
   pilot?: string;
 }
@@ -102,32 +104,94 @@ export function setTelemetryOff(off: boolean): void {
 }
 
 /**
- * Fire-and-forget. Never awaited by the UI and never throws — telemetry must
- * not be able to break a transcription.
+ * Vercel Blob's free plan allows about 2,000 writes a month and locks the store
+ * for 30 days past that, so events are not written one by one. They queue in
+ * memory and leave as one batch when the tab is hidden or closed. The things a
+ * person deliberately sends — feedback and ratings — go immediately.
  */
+type Queued = { name: EventName; props: EventProps; at: string };
+const queue: Queued[] = [];
+let listening = false;
+const SEND_NOW: ReadonlySet<EventName> = new Set(["feedback", "transcript_rated"]);
+const MAX_BATCH = 40;
+
+function flush(): void {
+  if (!queue.length) return;
+  const events = queue.splice(0, MAX_BATCH);
+  const body = JSON.stringify({
+    device: localDeviceId(),
+    ua: navigator.userAgent.slice(0, 200),
+    events,
+  });
+  try {
+    // keepalive lets a batch sent as the tab closes still leave.
+    void fetch("/api/events", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(
+      () => {},
+    );
+  } catch {
+    /* never let telemetry surface an error */
+  }
+  if (queue.length) flush();
+}
+
+function listen(): void {
+  if (listening) return;
+  listening = true;
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") flush();
+  });
+  window.addEventListener("pagehide", flush);
+}
+
+/** Fire-and-forget. Never throws — telemetry must not be able to break a transcription. */
 export function track(name: EventName, props: EventProps = {}): void {
   if (typeof window === "undefined") return;
   // Feedback is something the user deliberately typed and pressed send on, so
   // it goes even if they turned the background stats off.
   if (telemetryOff() && name !== "feedback") return;
 
-  const body = JSON.stringify({
+  listen();
+  queue.push({
     name,
-    props: { ...props, pilot: props.pilot ?? pilotCode() ?? undefined },
-    device: localDeviceId(),
+    props: {
+      ...props,
+      pilot: props.pilot ?? pilotCode() ?? undefined,
+      ...(name === "app_opened" ? { ref: firstTouch() ?? undefined } : {}),
+    },
     at: new Date().toISOString(),
-    ua: navigator.userAgent.slice(0, 200),
   });
+  if (SEND_NOW.has(name) || queue.length >= MAX_BATCH) flush();
+}
 
+const FIRST_TOUCH_KEY = "transcribio.firstTouch";
+
+/**
+ * Where this browser first came from — utm_source if the link had one, else the
+ * referring site (facebook.com, google.com…), else "direct". Recorded once, on
+ * the first page ever visited, so a later internal click doesn't overwrite it.
+ * Only the source name is kept, never the full referring URL.
+ */
+export function recordFirstTouch(): void {
+  if (typeof window === "undefined") return;
   try {
-    // keepalive so an event fired as the tab closes still leaves.
-    void fetch("/api/events", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body,
-      keepalive: true,
-    }).catch(() => {});
+    if (localStorage.getItem(FIRST_TOUCH_KEY)) return;
+    const utm = new URLSearchParams(location.search).get("utm_source");
+    let ref = "direct";
+    if (utm) ref = utm.toLowerCase().slice(0, 40);
+    else if (document.referrer) {
+      const host = new URL(document.referrer).hostname.replace(/^(www|m|l|lm)\./, "");
+      if (host && host !== location.hostname) ref = host.slice(0, 60);
+    }
+    localStorage.setItem(FIRST_TOUCH_KEY, ref);
   } catch {
-    /* never let telemetry surface an error */
+    /* storage blocked */
+  }
+}
+
+function firstTouch(): string | null {
+  try {
+    return localStorage.getItem(FIRST_TOUCH_KEY);
+  } catch {
+    return null;
   }
 }
