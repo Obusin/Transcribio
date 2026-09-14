@@ -1,4 +1,4 @@
-import { put, list } from "@vercel/blob";
+import { get, list, put } from "@vercel/blob";
 import { fail, json, sameOrigin } from "@/server/http";
 
 /**
@@ -68,7 +68,8 @@ export async function POST(req: Request) {
   const day = event.at.slice(0, 10);
   try {
     await put(`events/${day}/${Date.now()}-${crypto.randomUUID().slice(0, 8)}.json`, JSON.stringify(event), {
-      access: "public",
+      // The store is private: tester data must never sit at a guessable public URL.
+      access: "private",
       contentType: "application/json",
       addRandomSuffix: false,
     });
@@ -94,7 +95,9 @@ export async function GET(req: Request) {
   const events = await Promise.all(
     newest.map(async (b) => {
       try {
-        return await fetch(b.url).then((r) => r.json());
+        // Private blobs aren't readable by URL; read them through the SDK with the store token.
+        const found = await get(b.pathname, { access: "private", useCache: false });
+        return found ? await new Response(found.stream).json() : null;
       } catch {
         return null;
       }

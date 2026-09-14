@@ -6,3 +6,6 @@ docs/
 node_modules/
 *.tsbuildinfo
 .gstack/
+
+# Local benchmark symlink into bench/data. Never part of the site.
+public/bench-data
